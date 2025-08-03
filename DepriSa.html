@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a2463;
-            --secondary: #d8315b;
-            --accent: #1e96fc;
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #FFD700;
             --light: #f8f9fa;
-            --dark: #212529;
+            --dark: #121212;
             --success: #43aa8b;
             --track: #2c3e50;
         }
@@ -26,9 +26,8 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #1a2a6c, #2c3e50, #4A235A);
-            background-attachment: fixed;
-            color: white;
+            background: var(--dark);
+            color: var(--secondary);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -49,8 +48,8 @@
         
         /* Header Styles */
         header {
-            background: rgba(10, 36, 99, 0.95);
-            color: white;
+            background: rgba(0, 0, 0, 0.95);
+            color: var(--secondary);
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -75,29 +74,27 @@
         .logo-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
             font-weight: bold;
-            color: white;
-            box-shadow: 0 0 15px rgba(216, 49, 91, 0.5);
+            color: var(--accent);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            border: 2px solid var(--accent);
         }
         
         .logo-text h1 {
             font-size: 1.8rem;
             margin-bottom: 5px;
-            background: linear-gradient(to right, #ff9966, #ff5e62);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--secondary);
         }
         
         .logo-text p {
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: var(--accent);
             letter-spacing: 2px;
         }
         
@@ -111,7 +108,7 @@
         }
         
         nav ul li a {
-            color: white;
+            color: var(--secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
@@ -145,16 +142,16 @@
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--secondary);
             font-size: 1.8rem;
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(10, 36, 99, 0.85), rgba(10, 36, 99, 0.9)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), 
                         url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-            color: white;
+            color: var(--secondary);
             text-align: center;
             padding: 150px 20px 100px;
             position: relative;
@@ -168,7 +165,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle, transparent 20%, rgba(10, 36, 99, 0.9) 90%);
+            background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.9) 90%);
         }
         
         .hero-content {
@@ -183,10 +180,7 @@
             margin-bottom: 20px;
             letter-spacing: 3px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(to right, #ffffff, #a1c4fd);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--accent);
         }
         
         .hero-content p {
@@ -198,8 +192,8 @@
         
         .btn {
             display: inline-block;
-            background: linear-gradient(to right, var(--secondary), #ff9966);
-            color: white;
+            background: var(--accent);
+            color: var(--primary);
             padding: 15px 35px;
             border-radius: 30px;
             text-decoration: none;
@@ -209,7 +203,7 @@
             transition: all 0.3s ease;
             border: none;
             font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 5px 15px rgba(216, 49, 91, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
             margin: 10px;
             position: relative;
             overflow: hidden;
@@ -217,7 +211,7 @@
         
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(216, 49, 91, 0.6);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
         }
         
         .btn:active {
@@ -231,7 +225,7 @@
         }
         
         .btn-outline:hover {
-            background: rgba(30, 150, 252, 0.1);
+            background: rgba(255, 215, 0, 0.1);
         }
         
         .track-animation {
@@ -254,8 +248,8 @@
             background: repeating-linear-gradient(90deg, 
                 transparent, 
                 transparent 20px, 
-                white 20px, 
-                white 40px
+                var(--accent) 20px, 
+                var(--accent) 40px
             );
             transform: translateY(-50%);
         }
@@ -267,6 +261,7 @@
             font-size: 2.5rem;
             animation: race 8s linear infinite;
             z-index: 2;
+            color: var(--accent);
         }
         
         @keyframes race {
@@ -287,7 +282,7 @@
         
         .section-title h2 {
             font-size: 2.8rem;
-            color: white;
+            color: var(--accent);
             display: inline-block;
             margin-bottom: 20px;
         }
@@ -318,7 +313,7 @@
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent);
         }
         
         .about-text {
@@ -352,7 +347,7 @@
         }
         
         .achievements {
-            background: linear-gradient(135deg, rgba(30, 150, 252, 0.15), rgba(10, 36, 99, 0.2));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(0, 0, 0, 0.2));
             border-radius: 15px;
             padding: 30px;
             text-align: center;
@@ -360,7 +355,7 @@
         
         .achievements i {
             font-size: 4rem;
-            color: gold;
+            color: var(--accent);
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
@@ -368,7 +363,7 @@
         .achievements h3 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: gold;
+            color: var(--accent);
         }
         
         .achievements p {
@@ -381,7 +376,7 @@
         
         /* Team Section */
         .team {
-            background: linear-gradient(to bottom, #0c2461, #1e3799);
+            background: linear-gradient(to bottom, #000000, #121212);
         }
         
         .team-grid {
@@ -399,35 +394,31 @@
             transition: all 0.4s ease;
             text-align: center;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent);
         }
         
         .team-member:hover {
             transform: translateY(-15px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            background: rgba(30, 150, 252, 0.1);
+            background: rgba(255, 215, 0, 0.1);
         }
         
         .member-image {
             height: 280px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), #333333);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 5rem;
+            color: var(--accent);
             position: relative;
             overflow: hidden;
         }
         
-        .member-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .member-image img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+            object-fit: cover;
+            object-position: center;
         }
         
         .member-info {
@@ -468,7 +459,7 @@
         
         .social-links a:hover {
             background: var(--accent);
-            color: white;
+            color: var(--primary);
             transform: translateY(-5px);
         }
         
@@ -487,7 +478,7 @@
             text-align: center;
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent);
             position: relative;
             overflow: hidden;
         }
@@ -495,7 +486,7 @@
         .highlight-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            background: rgba(30, 150, 252, 0.1);
+            background: rgba(255, 215, 0, 0.1);
         }
         
         .highlight-card::before {
@@ -528,7 +519,7 @@
         
         /* Sponsorship Section */
         .sponsorship {
-            background: linear-gradient(to bottom, #1a365d, #0c2461);
+            background: linear-gradient(to bottom, #000000, #121212);
         }
         
         .packages {
@@ -544,7 +535,7 @@
             padding: 40px 30px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -565,14 +556,14 @@
             background: var(--accent);
         }
         
-        .package.metallic::before { background: #bdc3c7; }
-        .package.apex::before { background: #f1c40f; }
-        .package.supreme::before { background: #e74c3c; }
+        .package.metallic::before { background: #c0c0c0; }
+        .package.apex::before { background: var(--accent); }
+        .package.supreme::before { background: #ff4500; }
         
         .package h3 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: white;
+            color: var(--secondary);
         }
         
         .package .price {
@@ -583,9 +574,9 @@
             font-family: 'Orbitron', sans-serif;
         }
         
-        .package.metallic .price { color: #bdc3c7; }
-        .package.apex .price { color: #f1c40f; }
-        .package.supreme .price { color: #e74c3c; }
+        .package.metallic .price { color: #c0c0c0; }
+        .package.apex .price { color: var(--accent); }
+        .package.supreme .price { color: #ff4500; }
         
         .features {
             list-style: none;
@@ -610,9 +601,9 @@
             font-size: 1.2rem;
         }
         
-        .package.metallic .features li i { color: #bdc3c7; }
-        .package.apex .features li i { color: #f1c40f; }
-        .package.supreme .features li i { color: #e74c3c; }
+        .package.metallic .features li i { color: #c0c0c0; }
+        .package.apex .features li i { color: var(--accent); }
+        .package.supreme .features li i { color: #ff4500; }
         
         /* Contact Section */
         .contact-content {
@@ -651,7 +642,7 @@
         }
         
         .info-item:hover {
-            background: rgba(30, 150, 252, 0.1);
+            background: rgba(255, 215, 0, 0.1);
             transform: translateX(10px);
         }
         
@@ -665,7 +656,7 @@
         .info-content h4 {
             font-size: 1.4rem;
             margin-bottom: 8px;
-            color: white;
+            color: var(--secondary);
         }
         
         .info-content p, .info-content a {
@@ -705,7 +696,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(30, 150, 252, 0.3);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
         }
         
         textarea.form-control {
@@ -715,7 +706,7 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, #0a0e2a, #000);
+            background: linear-gradient(to bottom, #000000, #121212);
             color: white;
             padding: 80px 0 30px;
             position: relative;
@@ -729,7 +720,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
+            background: linear-gradient(to right, var(--accent), #ff4500);
         }
         
         .footer-content {
@@ -748,10 +739,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(to right, var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--accent);
             display: inline-block;
         }
         
@@ -776,7 +764,7 @@
             bottom: 0;
             width: 60px;
             height: 3px;
-            background: var(--secondary);
+            background: var(--accent);
         }
         
         .footer-links ul {
@@ -832,7 +820,7 @@
         
         .social-links a:hover {
             background: var(--accent);
-            color: white;
+            color: var(--primary);
             transform: translateY(-5px);
         }
         
@@ -863,7 +851,7 @@
         
         .newsletter-form button {
             background: var(--accent);
-            color: white;
+            color: var(--primary);
             border: none;
             padding: 0 30px;
             border-radius: 0 30px 30px 0;
@@ -876,7 +864,7 @@
         }
         
         .newsletter-form button:hover {
-            background: var(--secondary);
+            background: #ffcc00;
         }
         
         .copyright {
@@ -911,7 +899,7 @@
                 top: 90px;
                 left: 0;
                 right: 0;
-                background: rgba(10, 36, 99, 0.95);
+                background: rgba(0, 0, 0, 0.95);
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -1019,7 +1007,7 @@
         </div>
         <div class="track-animation">
             <div class="race-line"></div>
-            <div class="race-car">🏎️</div>
+            <div class="race-car"><i class="fas fa-car-side"></i></div>
         </div>
     </section>
 
@@ -1064,7 +1052,7 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user"></i>
+                        <img src="images/izzah-jannah.jpg" alt="Izzah Jannah - Team Manager">
                     </div>
                     <div class="member-info">
                         <h3>IZZAH JANNAH</h3>
@@ -1078,7 +1066,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user"></i>
+                        <img src="images/wafiy-muslim.jpg" alt="Wafiy Muslim - Manufacturing Engineer">
                     </div>
                     <div class="member-info">
                         <h3>WAFIY MUSLIM</h3>
@@ -1092,7 +1080,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user"></i>
+                        <img src="images/koo-yi-ler.jpg" alt="Koo Yi Ler - Design Engineer">
                     </div>
                     <div class="member-info">
                         <h3>KOO YI LER</h3>
@@ -1106,7 +1094,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user"></i>
+                        <img src="images/aisyah.jpg" alt="Aisyah - Sponsorship & Marketing Manager">
                     </div>
                     <div class="member-info">
                         <h3>AISYAH</h3>
@@ -1120,7 +1108,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user"></i>
+                        <img src="images/nurhumaira-balqis.jpg" alt="Nurhumaira Balqis - Finance Manager">
                     </div>
                     <div class="member-info">
                         <h3>NURHUMAIRA BALQIS</h3>
@@ -1134,7 +1122,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user"></i>
+                        <img src="images/balqis-an-nur.jpg" alt="Balqis An Nur - Graphic Designer">
                     </div>
                     <div class="member-info">
                         <h3>BALQIS AN NUR</h3>
