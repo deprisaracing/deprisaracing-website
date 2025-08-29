@@ -161,15 +161,18 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
+        /* Hero Section - FIXED CENTERING */
         .hero {
             background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)), 
-                        url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+                        url('photo_2025-08-25_11-09-19') center/cover no-repeat;
             color: var(--primary); /* Black text */
             text-align: center;
             padding: 150px 20px 100px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
         }
         
         .hero::before {
@@ -190,6 +193,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s forwards 0.5s;
+            width: 100%;
         }
         
         @keyframes fadeInUp {
@@ -215,6 +219,13 @@
             color: var(--primary); /* Black text */
         }
         
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
         .btn {
             display: inline-block;
             background: var(--accent); /* Gold background */
@@ -229,7 +240,6 @@
             border: none;
             font-family: 'Orbitron', sans-serif;
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-            margin: 10px;
             position: relative;
             overflow: hidden;
         }
@@ -1005,14 +1015,16 @@
                 font-size: 1.2rem;
             }
             
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .btn {
                 display: block;
                 width: 100%;
+                max-width: 300px;
                 margin: 10px 0;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
             }
             
             .section {
@@ -1358,7 +1370,7 @@
                     <p>Innovative STEM Racing Team from SMK Tun Mutahir, Melaka. Redefining speed through science, technology, engineering, and mathematics.</p>
                     <div class="social-links">
                         <a href="https://www.youtube.com/@DepriSaRacing" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/smartracing_sr?igsh=N2dicWVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/smartracing_sr?igsh=N2dic WVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://x.com/DeprisaRacing" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
