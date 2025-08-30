@@ -9,10 +9,10 @@
     <style>
         :root {
             --primary: #000000;
-            --secondary: #000000; /* Black text */
-            --accent: #FFD700; /* Gold color */
+            --secondary: #000000;
+            --accent: #FFD700;
             --light: #f8f9fa;
-            --dark: #ffffff; /* White background */
+            --dark: #ffffff;
             --success: #43aa8b;
             --track: #2c3e50;
         }
@@ -36,7 +36,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .container {
@@ -56,7 +56,7 @@
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--accent); /* Gold border */
+            border-bottom: 2px solid var(--accent);
         }
         
         .header-content {
@@ -83,7 +83,7 @@
             font-weight: bold;
             color: var(--accent);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            border: 2px solid var(--accent); /* Gold border */
+            border: 2px solid var(--accent);
             overflow: hidden;
             animation: pulse 2s infinite;
         }
@@ -103,12 +103,12 @@
         .logo-text h1 {
             font-size: 1.8rem;
             margin-bottom: 5px;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .logo-text p {
             font-size: 0.9rem;
-            color: var(--accent); /* Gold text */
+            color: var(--accent);
             letter-spacing: 2px;
         }
         
@@ -122,7 +122,7 @@
         }
         
         nav ul li a {
-            color: var(--primary); /* Black text */
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
@@ -133,7 +133,7 @@
         }
         
         nav ul li a:hover {
-            color: var(--accent); /* Gold text on hover */
+            color: var(--accent);
         }
         
         nav ul li a::after {
@@ -143,7 +143,7 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background: var(--accent); /* Gold underline */
+            background: var(--accent);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -156,16 +156,16 @@
             display: none;
             background: none;
             border: none;
-            color: var(--primary); /* Black icon */
+            color: var(--primary);
             font-size: 1.8rem;
             cursor: pointer;
         }
         
-        /* Hero Section - FIXED CENTERING */
+        /* Hero Section - UPDATED WITH LOCAL IMAGE PATH */
         .hero {
             background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)), 
-                        url('photo_2025-08-25_11-09-19.jpg') center/cover no-repeat;
-            color: var(--primary); /* Black text */
+                        url('photo_2025-08-25_11-09-19') center/cover no-repeat;
+            color: var(--primary);
             text-align: center;
             padding: 150px 20px 100px;
             position: relative;
@@ -208,7 +208,7 @@
             margin-bottom: 20px;
             letter-spacing: 3px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
         }
         
         .hero-content p {
@@ -216,7 +216,7 @@
             max-width: 800px;
             margin: 0 auto 40px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .hero-btns {
@@ -228,8 +228,8 @@
         
         .btn {
             display: inline-block;
-            background: var(--accent); /* Gold background */
-            color: var(--primary); /* Black text */
+            background: var(--accent);
+            color: var(--primary);
             padding: 15px 35px;
             border-radius: 30px;
             text-decoration: none;
@@ -255,8 +255,8 @@
         
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--accent); /* Gold border */
-            color: var(--accent); /* Gold text */
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
         
         .btn-outline:hover {
@@ -296,7 +296,7 @@
             font-size: 2.5rem;
             animation: race 8s linear infinite;
             z-index: 2;
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
         }
         
         @keyframes race {
@@ -307,7 +307,7 @@
         /* About Section */
         .section {
             padding: 100px 0;
-            background: var(--dark); /* White background */
+            background: var(--dark);
         }
         
         .section-title {
@@ -318,7 +318,7 @@
         
         .section-title h2 {
             font-size: 2.8rem;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
             display: inline-block;
             margin-bottom: 20px;
         }
@@ -328,7 +328,7 @@
             display: block;
             width: 100px;
             height: 5px;
-            background: var(--accent); /* Gold line */
+            background: var(--accent);
             margin: 20px auto 0;
             border-radius: 3px;
         }
@@ -338,7 +338,7 @@
             margin: 20px auto 0;
             font-size: 1.2rem;
             opacity: 0.9;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .about-content {
@@ -350,7 +350,7 @@
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--accent); /* Gold border */
+            border: 1px solid var(--accent);
             transform: translateY(50px);
             opacity: 0;
             transition: all 0.8s ease;
@@ -368,14 +368,14 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
         }
         
         .about-text p {
             margin-bottom: 30px;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .about-image {
@@ -383,7 +383,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 5px solid var(--accent); /* Gold border */
+            border: 5px solid var(--accent);
             transform: perspective(1000px) rotateY(-15deg);
             transition: transform 0.5s ease;
         }
@@ -403,12 +403,12 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            border: 1px solid var(--accent); /* Gold border */
+            border: 1px solid var(--accent);
         }
         
         .achievements i {
             font-size: 4rem;
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
@@ -416,7 +416,7 @@
         .achievements h3 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
         }
         
         .achievements p {
@@ -425,7 +425,7 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.05);
             border-radius: 10px;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         /* Team Section */
@@ -448,7 +448,7 @@
             transition: all 0.4s ease;
             text-align: center;
             backdrop-filter: blur(5px);
-            border: 1px solid var(--accent); /* Gold border */
+            border: 1px solid var(--accent);
             transform: translateY(50px);
             opacity: 0;
         }
@@ -493,12 +493,12 @@
         
         .member-info h3 {
             margin-bottom: 8px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
             font-size: 1.5rem;
         }
         
         .member-info .role {
-            color: var(--primary); /* Black text */
+            color: var(--primary);
             font-weight: 600;
             margin-bottom: 20px;
             display: block;
@@ -518,14 +518,14 @@
             width: 40px;
             height: 40px;
             background: rgba(0, 0, 0, 0.1);
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
         
         .social-links a:hover {
-            background: var(--accent); /* Gold background */
-            color: var(--primary); /* Black icon */
+            background: var(--accent);
+            color: var(--primary);
             transform: translateY(-5px);
         }
         
@@ -544,7 +544,7 @@
             text-align: center;
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
-            border: 1px solid var(--accent); /* Gold border */
+            border: 1px solid var(--accent);
             position: relative;
             overflow: hidden;
             transform: translateY(50px);
@@ -569,18 +569,18 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: var(--accent); /* Gold accent line */
+            background: var(--accent);
         }
         
         .highlight-card .icon {
             font-size: 3.5rem;
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             margin-bottom: 25px;
         }
         
         .highlight-card h3 {
             margin-bottom: 20px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
             font-size: 1.8rem;
         }
         
@@ -588,7 +588,114 @@
             margin-bottom: 25px;
             font-size: 1.1rem;
             line-height: 1.7;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.5s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--accent);
+        }
+        
+        .modal-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .budget-table th, .budget-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .budget-table th {
+            background-color: rgba(255, 215, 0, 0.1);
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .budget-table tr:last-child {
+            font-weight: bold;
+            background-color: rgba(255, 215, 0, 0.2);
+        }
+        
+        .budget-table tr:hover {
+            background-color: rgba(255, 215, 0, 0.05);
+        }
+        
+        .results-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .results-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .results-list li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .results-list li:last-child {
+            border-bottom: none;
         }
         
         /* Sponsorship Section */
@@ -609,7 +716,7 @@
             padding: 40px 30px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 1px solid var(--accent); /* Gold border */
+            border: 1px solid var(--accent);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -634,7 +741,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--accent); /* Gold top border */
+            background: var(--accent);
         }
         
         .package.metallic::before { background: #c0c0c0; }
@@ -644,14 +751,14 @@
         .package h3 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .package .price {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 30px;
-            color: var(--accent); /* Gold text */
+            color: var(--accent);
             font-family: 'Orbitron', sans-serif;
         }
         
@@ -670,7 +777,7 @@
             border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .features li:last-child {
@@ -679,7 +786,7 @@
         
         .features li i {
             margin-right: 12px;
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             font-size: 1.2rem;
         }
         
@@ -704,14 +811,14 @@
         .contact-info h3 {
             font-size: 2rem;
             margin-bottom: 30px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
         }
         
         .contact-info p {
             margin-bottom: 40px;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .info-item {
@@ -722,7 +829,7 @@
             padding: 20px;
             border-radius: 15px;
             transition: all 0.3s ease;
-            border: 1px solid var(--accent); /* Gold border */
+            border: 1px solid var(--accent);
         }
         
         .info-item:hover {
@@ -732,7 +839,7 @@
         
         .info-item i {
             font-size: 1.8rem;
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             margin-right: 20px;
             min-width: 40px;
         }
@@ -740,18 +847,18 @@
         .info-content h4 {
             font-size: 1.4rem;
             margin-bottom: 8px;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .info-content p, .info-content a {
             font-size: 1.1rem;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
         .info-content a:hover {
-            color: var(--accent); /* Gold text on hover */
+            color: var(--accent);
         }
         
         .form-group {
@@ -763,7 +870,7 @@
             margin-bottom: 10px;
             font-weight: 500;
             font-size: 1.1rem;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .form-control {
@@ -775,12 +882,12 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             background: rgba(0, 0, 0, 0.05);
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .form-control:focus {
             outline: none;
-            border-color: var(--accent); /* Gold border */
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
         }
         
@@ -792,7 +899,7 @@
         /* Footer */
         footer {
             background: linear-gradient(to bottom, #ffffff, #f5f5f5);
-            color: var(--primary); /* Black text */
+            color: var(--primary);
             padding: 80px 0 30px;
             position: relative;
             overflow: hidden;
@@ -824,7 +931,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
             display: inline-block;
         }
         
@@ -832,13 +939,13 @@
             margin-bottom: 30px;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .footer-links h3, .footer-newsletter h3 {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            color: var(--primary); /* Black text (changed from gold) */
+            color: var(--primary);
             position: relative;
             padding-bottom: 15px;
         }
@@ -850,7 +957,7 @@
             bottom: 0;
             width: 60px;
             height: 3px;
-            background: var(--accent); /* Gold line */
+            background: var(--accent);
         }
         
         .footer-links ul {
@@ -862,7 +969,7 @@
         }
         
         .footer-links ul li a {
-            color: rgba(0, 0, 0, 0.7); /* Dark gray text */
+            color: rgba(0, 0, 0, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1.1rem;
@@ -872,17 +979,17 @@
         }
         
         .footer-links ul li a i {
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             transition: all 0.3s ease;
         }
         
         .footer-links ul li a:hover {
-            color: var(--accent); /* Gold text on hover */
+            color: var(--accent);
             transform: translateX(5px);
         }
         
         .footer-links ul li a:hover i {
-            color: var(--primary); /* Black icon on hover */
+            color: var(--primary);
         }
         
         .social-links {
@@ -898,15 +1005,15 @@
             width: 50px;
             height: 50px;
             background: rgba(0, 0, 0, 0.1);
-            color: var(--accent); /* Gold icon */
+            color: var(--accent);
             border-radius: 50%;
             transition: all 0.3s ease;
             font-size: 1.4rem;
         }
         
         .social-links a:hover {
-            background: var(--accent); /* Gold background */
-            color: var(--primary); /* Black icon */
+            background: var(--accent);
+            color: var(--primary);
             transform: translateY(-5px);
         }
         
@@ -914,7 +1021,7 @@
             margin-bottom: 25px;
             font-size: 1.1rem;
             line-height: 1.7;
-            color: var(--primary); /* Black text */
+            color: var(--primary);
         }
         
         .newsletter-form {
@@ -928,7 +1035,7 @@
             border: none;
             border-radius: 30px 0 0 30px;
             background: rgba(0, 0, 0, 0.1);
-            color: var(--primary); /* Black text */
+            color: var(--primary);
             font-family: 'Montserrat', sans-serif;
         }
         
@@ -937,8 +1044,8 @@
         }
         
         .newsletter-form button {
-            background: var(--accent); /* Gold background */
-            color: var(--primary); /* Black text */
+            background: var(--accent);
+            color: var(--primary);
             border: none;
             padding: 0 30px;
             border-radius: 0 30px 30px 0;
@@ -976,6 +1083,11 @@
             
             .contact-content {
                 flex-direction: column;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
             }
         }
         
@@ -1034,6 +1146,14 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
+            
+            .budget-table {
+                font-size: 0.9rem;
+            }
+            
+            .budget-table th, .budget-table td {
+                padding: 8px 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1053,6 +1173,10 @@
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
+            }
+            
+            .modal-content {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -1149,8 +1273,8 @@
                         <h3>IZZAH JANNAH</h3>
                         <span class="role">Team Manager & Graphic Designer</span>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/smartracing_sr?igsh=N2dicWVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
@@ -1163,8 +1287,8 @@
                         <h3>WAFIY MUSLIM</h3>
                         <span class="role">Manufacturing Engineer</span>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/smartracing_sr?igsh=N2dicWVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
@@ -1177,8 +1301,8 @@
                         <h3>KOO YI LER</h3>
                         <span class="role">Design Engineer</span>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/smartracing_sr?igsh=N2dicWVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
@@ -1191,8 +1315,8 @@
                         <h3>AISYAH BINTI HASHIM</h3>
                         <span class="role">Sponsor & Marketing Designer & Finance Manager</span>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/smartracing_sr?igsh=N2dicWVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
@@ -1215,7 +1339,7 @@
                     </div>
                     <h3>Project Objective</h3>
                     <p>Design and build a competitive and innovative F1 racing car, test and optimize performance, and compete in STEM RACING MALAYSIA STATE-LEVEL COMPETITION 2025.</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">Learn More</a>
+                    <a href="#" class="btn learn-more-btn" style="margin-top: 15px;" data-modal="modal-objective">Learn More</a>
                 </div>
                 <div class="highlight-card">
                     <div class="icon">
@@ -1223,7 +1347,7 @@
                     </div>
                     <h3>Expected Results</h3>
                     <p>Successfully build a functional racing car, gain valuable experience, elevate school and state recognition, establish a strong reputation, and enhance engineering skills.</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">Our Goals</a>
+                    <a href="#" class="btn learn-more-btn" style="margin-top: 15px;" data-modal="modal-results">Our Goals</a>
                 </div>
                 <div class="highlight-card">
                     <div class="icon">
@@ -1231,11 +1355,112 @@
                     </div>
                     <h3>Project Budget</h3>
                     <p>Total project budget of RM 19,126 covering team identity, manufacturing, marketing, and portfolio expenses.</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">View Details</a>
+                    <a href="#" class="btn learn-more-btn" style="margin-top: 15px;" data-modal="modal-budget">View Details</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Project Objective Modal -->
+    <div id="modal-objective" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Project Objective</h2>
+            </div>
+            <p>We are currently seeking funding to support the development of a high-performance miniature Formula 1 racing car. Our goal is to design, build, refine, and race an advanced car that highlights innovation, cutting-edge engineering, and technology.</p>
+            
+            <h3>Key Objectives:</h3>
+            <ul class="results-list">
+                <li>Design and build a competitive and innovative F1 racing car</li>
+                <li>Test and optimize the racing car's performance</li>
+                <li>Compete in STEM RACING MALAYSIA STATE-LEVEL COMPETITION 2025</li>
+            </ul>
+            
+            <p>This project represents an incredible opportunity for our team to apply STEM principles in a practical, exciting context while developing valuable skills in engineering, project management, and teamwork.</p>
+        </div>
+    </div>
+
+    <!-- Expected Results Modal -->
+    <div id="modal-results" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Expected Results</h2>
+            </div>
+            <p>Our participation in the STEM Racing Malaysia competition will yield significant benefits beyond the race track. We anticipate the following outcomes:</p>
+            
+            <ul class="results-list">
+                <li>Successfully designed, built, and assembled a functional racing car</li>
+                <li>Gained valuable exposure and experience through participation in the STEM Racing Malaysia State-Level Competition 2025</li>
+                <li>Elevated the image of both the school and the state of Melaka, earning wider recognition</li>
+                <li>Established a strong and respectable reputation for the team, the school, and Melaka</li>
+                <li>Enhanced engineering skills and significantly improved teamwork among team members</li>
+            </ul>
+            
+            <p>These outcomes will not only benefit our current team members but will also create a legacy for future students interested in STEM fields.</p>
+        </div>
+    </div>
+
+    <!-- Project Budget Modal -->
+    <div id="modal-budget" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Project Budget</h2>
+            </div>
+            <p>Total project budget of RM 19,126 covering team identity, manufacturing, marketing, and portfolio expenses. Below is the detailed breakdown:</p>
+            
+            <table class="budget-table">
+                <tr>
+                    <th>ITEM</th>
+                    <th>AMOUNT (RM)</th>
+                </tr>
+                <tr>
+                    <td>TEAM APPAREL</td>
+                    <td>5,000</td>
+                </tr>
+                <tr>
+                    <td>MATERIAL, TOOLS</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>TYRES</td>
+                    <td>4,600</td>
+                </tr>
+                <tr>
+                    <td>CAR KIT</td>
+                    <td>4,976</td>
+                </tr>
+                <tr>
+                    <td>AIR BRUSHING</td>
+                    <td>2,600</td>
+                </tr>
+                <tr>
+                    <td>STICKERS</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>FLYER, BANNER, ADVERTISMENT</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>MERCHANDISE</td>
+                    <td>350</td>
+                </tr>
+                <tr>
+                    <td>PRINTING</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td><strong>TOTAL</strong></td>
+                    <td><strong>19,126</strong></td>
+                </tr>
+            </table>
+            
+            <p>This budget represents our comprehensive plan to design, build, and compete with a professionally crafted racing car while promoting our team and sponsors effectively.</p>
+        </div>
+    </div>
 
     <!-- Sponsorship Section -->
     <section id="sponsors" class="section sponsorship">
@@ -1331,9 +1556,9 @@
                     
                     <div class="social-links" style="margin-top: 30px;">
                         <a href="https://www.youtube.com/@DepriSaRacing" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/smartracing_sr?igsh=N2dicWVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://x.com/DeprisaRacing" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -1370,9 +1595,9 @@
                     <p>Innovative STEM Racing Team from SMK Tun Mutahir, Melaka. Redefining speed through science, technology, engineering, and mathematics.</p>
                     <div class="social-links">
                         <a href="https://www.youtube.com/@DepriSaRacing" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/smartracing_sr?igsh=N2dic WVrMGN2NWd4" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://x.com/DeprisaRacing" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/deprisa-racing-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1467,7 +1692,32 @@
         document.querySelectorAll('.about-content, .team-member, .highlight-card, .package').forEach(el => {
             observer.observe(el);
         });
+        
+        // Modal functionality
+        const modalButtons = document.querySelectorAll('.learn-more-btn');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close');
+        
+        modalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'block';
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                modal.style.display = 'none';
+            });
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
-
