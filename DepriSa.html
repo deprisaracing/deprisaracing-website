@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>房间随机分配系统</title>
+    <title>实时房间分配系统</title>
     <style>
         * {
             box-sizing: border-box;
@@ -28,7 +28,7 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
         }
         
         h1 {
@@ -288,12 +288,44 @@
         .instructions li {
             margin-bottom: 8px;
         }
+        
+        .connection-status {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .connected {
+            background-color: #2ecc71;
+        }
+        
+        .disconnected {
+            background-color: #e74c3c;
+        }
+        
+        .connection-info {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
     </style>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>房间随机分配系统</h1>
+        <h1>实时房间分配系统</h1>
         <p class="subtitle">7位参与者将随机分配到3个房间：A房(2人)、B房(2人)、C房(3人)</p>
+        
+        <div class="connection-info">
+            <span id="connectionStatus" class="connection-status disconnected"></span>
+            <span id="connectionText">正在连接数据库...</span>
+        </div>
         
         <div class="instructions">
             <h3>使用说明：</h3>
@@ -301,7 +333,7 @@
                 <li>每个人单独打开此页面，只需输入自己的名字</li>
                 <li>点击"随机分配房间"按钮进行抽取</li>
                 <li>抽取后系统会自动将您分配到A、B或C房间</li>
-                <li>您可以看到完整的分配结果表格，包括自己和谁一间房</li>
+                <li>所有参与者都能看到实时更新的分配结果</li>
                 <li><strong>注意：一旦抽取，结果不可更改</strong></li>
             </ol>
         </div>
@@ -310,17 +342,17 @@
             <div class="room-card room-a">
                 <div class="room-name">A 房</div>
                 <div class="room-capacity">容纳人数: 2人</div>
-                <div class="room-capacity">已分配: <span id="roomA-count">0</span>人</div>
+                <div class="room-capacity">已分配: <span id="roomA-count">0</span>/2人</div>
             </div>
             <div class="room-card room-b">
                 <div class="room-name">B 房</div>
                 <div class="room-capacity">容纳人数: 2人</div>
-                <div class="room-capacity">已分配: <span id="roomB-count">0</span>人</div>
+                <div class="room-capacity">已分配: <span id="roomB-count">0</span>/2人</div>
             </div>
             <div class="room-card room-c">
                 <div class="room-name">C 房</div>
                 <div class="room-capacity">容纳人数: 3人</div>
-                <div class="room-capacity">已分配: <span id="roomC-count">0</span>人</div>
+                <div class="room-capacity">已分配: <span id="roomC-count">0</span>/3人</div>
             </div>
         </div>
         
@@ -343,7 +375,7 @@
         </div>
         
         <div class="result-section">
-            <h2>分配结果</h2>
+            <h2>分配结果 (实时更新)</h2>
             <p>所有参与者分配结果如下：</p>
             
             <table class="result-table">
@@ -363,12 +395,27 @@
         </div>
         
         <div class="footer">
-            <p><strong>注意：</strong>分配结果将保存在浏览器中，直到您清除浏览器数据。</p>
+            <p><strong>注意：</strong>分配结果将保存在云端，所有用户都能看到相同的实时数据。</p>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Firebase配置
+            const firebaseConfig = {
+                apiKey: "AIzaSyDcxhWXm_37ylGw8w6mVM5VxW7bpEJ4ctc",
+                authDomain: "room-assignment-system.firebaseapp.com",
+                databaseURL: "https://room-assignment-system-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "room-assignment-system",
+                storageBucket: "room-assignment-system.appspot.com",
+                messagingSenderId: "123456789012",
+                appId: "1:123456789012:web:abcdef1234567890abcdef"
+            };
+            
+            // 初始化Firebase
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.database();
+            
             const assignButton = document.getElementById('assignButton');
             const resultTableBody = document.getElementById('resultTableBody');
             const statusMessage = document.getElementById('statusMessage');
@@ -376,9 +423,12 @@
             const roomACount = document.getElementById('roomA-count');
             const roomBCount = document.getElementById('roomB-count');
             const roomCCount = document.getElementById('roomC-count');
+            const connectionStatus = document.getElementById('connectionStatus');
+            const connectionText = document.getElementById('connectionText');
             
-            // 从本地存储加载已有的分配结果
-            let assignments = JSON.parse(localStorage.getItem('roomAssignments')) || {};
+            // 当前用户信息
+            let currentUser = '';
+            let isAssigned = false;
             
             // 房间容量配置
             const roomConfig = {
@@ -387,27 +437,82 @@
                 'C': { max: 3, current: 0, members: [] }
             };
             
+            // 监听数据库连接状态
+            const connectedRef = firebase.database().ref(".info/connected");
+            connectedRef.on("value", function(snap) {
+                if (snap.val() === true) {
+                    connectionStatus.className = "connection-status connected";
+                    connectionText.textContent = "已连接到数据库，数据实时同步中";
+                } else {
+                    connectionStatus.className = "connection-status disconnected";
+                    connectionText.textContent = "数据库连接中断，请检查网络";
+                }
+            });
+            
+            // 从Firebase数据库加载已有的分配结果
+            function loadAssignments() {
+                const assignmentsRef = database.ref('assignments');
+                
+                assignmentsRef.on('value', (snapshot) => {
+                    const data = snapshot.val();
+                    
+                    if (data) {
+                        // 重置房间计数
+                        for (let room in roomConfig) {
+                            roomConfig[room].current = 0;
+                            roomConfig[room].members = [];
+                        }
+                        
+                        // 更新房间计数和成员
+                        for (let userName in data) {
+                            const room = data[userName];
+                            if (roomConfig[room]) {
+                                roomConfig[room].current++;
+                                roomConfig[room].members.push(userName);
+                            }
+                        }
+                        
+                        // 更新显示
+                        updateRoomCounts();
+                        displayResults(data);
+                        
+                        // 检查当前用户是否已分配
+                        const currentUserName = userNameInput.value.trim();
+                        if (currentUserName && data[currentUserName]) {
+                            isAssigned = true;
+                            updateStatusMessage(`您已经分配过房间了！您被分配在房间 ${data[currentUserName]}`, "error");
+                            assignButton.disabled = true;
+                        }
+                    } else {
+                        // 没有数据时重置显示
+                        resetDisplay();
+                    }
+                    
+                    // 检查是否所有房间已满
+                    if (isAllRoomsFull()) {
+                        updateStatusMessage("所有房间已满，分配完成！", "success");
+                        assignButton.disabled = true;
+                    }
+                });
+            }
+            
             // 更新房间计数显示
             function updateRoomCounts() {
-                // 重置计数
-                for (let room in roomConfig) {
-                    roomConfig[room].current = 0;
-                    roomConfig[room].members = [];
-                }
-                
-                // 计算每个房间的人数
-                for (let participant in assignments) {
-                    const room = assignments[participant];
-                    if (roomConfig[room]) {
-                        roomConfig[room].current++;
-                        roomConfig[room].members.push(participant);
-                    }
-                }
-                
-                // 更新显示
                 roomACount.textContent = roomConfig['A'].current;
                 roomBCount.textContent = roomConfig['B'].current;
                 roomCCount.textContent = roomConfig['C'].current;
+            }
+            
+            // 重置显示
+            function resetDisplay() {
+                roomACount.textContent = '0';
+                roomBCount.textContent = '0';
+                roomCCount.textContent = '0';
+                resultTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="3" class="empty-row">等待分配...</td>
+                    </tr>
+                `;
             }
             
             // 检查是否所有房间已满
@@ -415,11 +520,6 @@
                 return roomConfig['A'].current >= roomConfig['A'].max &&
                        roomConfig['B'].current >= roomConfig['B'].max &&
                        roomConfig['C'].current >= roomConfig['C'].max;
-            }
-            
-            // 检查用户是否已经分配过
-            function isUserAlreadyAssigned(userName) {
-                return assignments.hasOwnProperty(userName);
             }
             
             // 更新状态消息
@@ -443,48 +543,46 @@
                     return;
                 }
                 
-                // 检查用户是否已经分配过
-                if (isUserAlreadyAssigned(userName)) {
-                    updateStatusMessage(`您已经分配过房间了！您被分配在房间 ${assignments[userName]}`, "error");
-                    displayResults();
-                    return;
-                }
-                
                 // 找出还有空间的房间
                 const availableRooms = Object.keys(roomConfig).filter(
                     room => roomConfig[room].current < roomConfig[room].max
                 );
                 
+                if (availableRooms.length === 0) {
+                    updateStatusMessage("没有可用房间！", "error");
+                    return;
+                }
+                
                 // 随机选择一个可用房间
                 const randomRoom = availableRooms[Math.floor(Math.random() * availableRooms.length)];
                 
-                // 分配用户到房间
-                assignments[userName] = randomRoom;
-                
-                // 保存到本地存储
-                localStorage.setItem('roomAssignments', JSON.stringify(assignments));
-                
-                // 更新房间计数
-                updateRoomCounts();
-                
-                // 显示结果
-                displayResults();
-                
-                // 更新状态消息
-                if (isAllRoomsFull()) {
-                    updateStatusMessage(`恭喜！您被分配到房间 ${randomRoom}。所有房间已满，分配完成！`, "success");
-                } else {
-                    updateStatusMessage(`恭喜！您被分配到房间 ${randomRoom}。`, "success");
-                }
+                // 保存到Firebase数据库
+                const assignmentsRef = database.ref('assignments');
+                assignmentsRef.child(userName).set(randomRoom)
+                    .then(() => {
+                        currentUser = userName;
+                        isAssigned = true;
+                        assignButton.disabled = true;
+                        
+                        // 更新状态消息
+                        if (isAllRoomsFull()) {
+                            updateStatusMessage(`恭喜！您被分配到房间 ${randomRoom}。所有房间已满，分配完成！`, "success");
+                        } else {
+                            updateStatusMessage(`恭喜！您被分配到房间 ${randomRoom}。`, "success");
+                        }
+                    })
+                    .catch((error) => {
+                        updateStatusMessage(`分配失败：${error.message}`, "error");
+                    });
             }
             
             // 显示分配结果
-            function displayResults() {
+            function displayResults(assignments) {
                 // 清空表格
                 resultTableBody.innerHTML = '';
                 
                 // 如果没有分配结果
-                if (Object.keys(assignments).length === 0) {
+                if (!assignments || Object.keys(assignments).length === 0) {
                     resultTableBody.innerHTML = `
                         <tr>
                             <td colspan="3" class="empty-row">等待分配...</td>
@@ -506,7 +604,7 @@
                 }
                 
                 // 获取当前用户
-                const currentUser = userNameInput.value.trim();
+                const currentUserName = userNameInput.value.trim();
                 
                 // 为每个参与者创建表格行
                 for (let room in roomMembers) {
@@ -519,14 +617,14 @@
                         const row = document.createElement('tr');
                         
                         // 如果是当前用户，高亮显示
-                        if (participant === currentUser) {
+                        if (participant === currentUserName) {
                             row.classList.add('my-result');
                         }
                         
                         // 参与者姓名列
                         const nameCell = document.createElement('td');
                         nameCell.textContent = participant;
-                        if (participant === currentUser) {
+                        if (participant === currentUserName) {
                             const youBadge = document.createElement('span');
                             youBadge.textContent = ' (您)';
                             youBadge.style.color = '#3498db';
@@ -555,19 +653,11 @@
             
             // 初始化页面
             function initializePage() {
-                // 更新房间计数
-                updateRoomCounts();
+                // 加载分配结果
+                loadAssignments();
                 
-                // 显示已有结果
-                displayResults();
-                
-                // 检查是否所有房间已满
-                if (isAllRoomsFull()) {
-                    updateStatusMessage("所有房间已满，分配完成！", "success");
-                    assignButton.disabled = true;
-                } else {
-                    updateStatusMessage("请输入您的姓名，然后点击'随机分配房间'按钮", "warning");
-                }
+                // 设置初始状态消息
+                updateStatusMessage("请输入您的姓名，然后点击'随机分配房间'按钮", "warning");
             }
             
             // 事件监听器
@@ -579,17 +669,20 @@
                 
                 if (!userName) {
                     updateStatusMessage("请输入您的姓名，然后点击'随机分配房间'按钮", "warning");
+                    assignButton.disabled = false;
                     return;
                 }
                 
-                // 检查用户是否已经分配过
-                if (isUserAlreadyAssigned(userName)) {
-                    updateStatusMessage(`您已经分配过房间了！您被分配在房间 ${assignments[userName]}`, "error");
-                    displayResults();
+                // 检查当前用户是否已分配
+                if (isAssigned) {
+                    updateStatusMessage(`您已经分配过房间了！您被分配在房间 ${roomForCurrentUser}`, "error");
+                    assignButton.disabled = true;
                 } else if (isAllRoomsFull()) {
                     updateStatusMessage("所有房间已满，无法再分配！", "error");
+                    assignButton.disabled = true;
                 } else {
                     updateStatusMessage("点击'随机分配房间'按钮进行分配", "success");
+                    assignButton.disabled = false;
                 }
             });
             
@@ -599,6 +692,7 @@
     </script>
 </body>
 </html>
+
 
 
 
