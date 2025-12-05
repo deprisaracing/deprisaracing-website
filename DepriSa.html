@@ -1,1726 +1,250 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DepriSa Racing Team - STEM Innovation in Motion</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #000000;
-            --secondary: #000000;
-            --accent: #FFD700;
-            --light: #f8f9fa;
-            --dark: #ffffff;
-            --success: #43aa8b;
-            --track: #2c3e50;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--dark);
-            color: var(--secondary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--secondary);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--accent);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--accent);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            border: 2px solid var(--accent);
-            overflow: hidden;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.8); }
-            100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        
-        .logo-text p {
-            font-size: 0.9rem;
-            color: var(--accent);
-            letter-spacing: 2px;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 30px;
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        nav ul li a:hover::after {
-            width: 70%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--primary);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section - UPDATED WITH LOCAL IMAGE PATH */
-        .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)), 
-                        url('photo_2025-08-25_11-09-19.jpg') center/cover no-repeat;
-            color: var(--primary);
-            text-align: center;
-            padding: 150px 20px 100px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.9) 90%);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s forwards 0.5s;
-            width: 100%;
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-content h2 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            color: var(--primary);
-        }
-        
-        .hero-content p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            color: var(--primary);
-        }
-        
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            border: none;
-            font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
-        }
-        
-        .btn:active {
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255, 215, 0, 0.1);
-        }
-        
-        .track-animation {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: var(--track);
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .race-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: repeating-linear-gradient(90deg, 
-                transparent, 
-                transparent 20px, 
-                var(--accent) 20px, 
-                var(--accent) 40px
-            );
-            transform: translateY(-50%);
-        }
-        
-        .race-car {
-            position: absolute;
-            bottom: 40px;
-            left: -100px;
-            font-size: 2.5rem;
-            animation: race 8s linear infinite;
-            z-index: 2;
-            color: var(--accent);
-        }
-        
-        @keyframes race {
-            0% { left: -100px; }
-            100% { left: 100%; }
-        }
-        
-        /* About Section */
-        .section {
-            padding: 100px 0;
-            background: var(--dark);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 5px;
-            background: var(--accent);
-            margin: 20px auto 0;
-            border-radius: 3px;
-        }
-        
-        .section-title p {
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            color: var(--primary);
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            background: rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--accent);
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 0.8s ease;
-        }
-        
-        .about-content.animated {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .about-text p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--primary);
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 5px solid var(--accent);
-            transform: perspective(1000px) rotateY(-15deg);
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover {
-            transform: perspective(1000px) rotateY(0);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .achievements {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(0, 0, 0, 0.05));
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid var(--accent);
-        }
-        
-        .achievements i {
-            font-size: 4rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-        
-        .achievements h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .achievements p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            color: var(--primary);
-        }
-        
-        /* Team Section */
-        .team {
-            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .team-member {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
-            text-align: center;
-            backdrop-filter: blur(5px);
-            border: 1px solid var(--accent);
-            transform: translateY(50px);
-            opacity: 0;
-        }
-        
-        .team-member.animated {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 215, 0, 0.1);
-        }
-        
-        .member-image {
-            height: 280px;
-            background: linear-gradient(135deg, var(--primary), #333333);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.5s ease;
-        }
-        
-        .team-member:hover .member-image img {
-            transform: scale(1.1);
-        }
-        
-        .member-info {
-            padding: 25px 20px;
-        }
-        
-        .member-info h3 {
-            margin-bottom: 8px;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-        
-        .member-info .role {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: block;
-            font-size: 1.1rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.1);
-            color: var(--accent);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        /* Project Section */
-        .project-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        
-        .highlight-card {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 15px;
-            padding: 35px 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-            transform: translateY(50px);
-            opacity: 0;
-        }
-        
-        .highlight-card.animated {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .highlight-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 215, 0, 0.1);
-        }
-        
-        .highlight-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent);
-        }
-        
-        .highlight-card .icon {
-            font-size: 3.5rem;
-            color: var(--accent);
-            margin-bottom: 25px;
-        }
-        
-        .highlight-card h3 {
-            margin-bottom: 20px;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-        
-        .highlight-card p {
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--primary);
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.7);
-        }
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 30px;
-            border: 2px solid var(--accent);
-            border-radius: 15px;
-            width: 90%;
-            max-width: 800px;
-            position: relative;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-            animation: modalFadeIn 0.5s;
-        }
-        
-        @keyframes modalFadeIn {
-            from {opacity: 0; transform: translateY(-50px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .close:hover {
-            color: var(--accent);
-        }
-        
-        .modal-header {
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .modal-header h2 {
-            color: var(--primary);
-            margin: 0;
-        }
-        
-        .budget-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        .budget-table th, .budget-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .budget-table th {
-            background-color: rgba(255, 215, 0, 0.1);
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .budget-table tr:last-child {
-            font-weight: bold;
-            background-color: rgba(255, 215, 0, 0.2);
-        }
-        
-        .budget-table tr:hover {
-            background-color: rgba(255, 215, 0, 0.05);
-        }
-        
-        .results-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        .results-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #ddd;
-            position: relative;
-            padding-left: 30px;
-        }
-        
-        .results-list li:before {
-            content: "✓";
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .results-list li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Sponsorship Section */
-        .sponsorship {
-            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
-        }
-        
-        .packages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .package {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--accent);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            transform: translateY(50px);
-            opacity: 0;
-        }
-        
-        .package.animated {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .package:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-        
-        .package::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--accent);
-        }
-        
-        .package.metallic::before { background: #c0c0c0; }
-        .package.apex::before { background: var(--accent); }
-        .package.supreme::before { background: #ff4500; }
-        
-        .package h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .package .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            color: var(--accent);
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .package.metallic .price { color: #c0c0c0; }
-        .package.apex .price { color: var(--accent); }
-        .package.supreme .price { color: #ff4500; }
-        
-        .features {
-            list-style: none;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-        
-        .features li {
-            padding: 12px 0;
-            border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            color: var(--primary);
-        }
-        
-        .features li:last-child {
-            border-bottom: none;
-        }
-        
-        .features li i {
-            margin-right: 12px;
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-        
-        .package.metallic .features li i { color: #c0c0c0; }
-        .package.apex .features li i { color: var(--accent); }
-        .package.supreme .features li i { color: #ff4500; }
-        
-        /* Contact Section */
-        .contact-content {
-            display: flex;
-            gap: 50px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-        
-        .contact-info p {
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--primary);
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--accent);
-        }
-        
-        .info-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            transform: translateX(10px);
-        }
-        
-        .info-item i {
-            font-size: 1.8rem;
-            color: var(--accent);
-            margin-right: 20px;
-            min-width: 40px;
-        }
-        
-        .info-content h4 {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        
-        .info-content p, .info-content a {
-            font-size: 1.1rem;
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .info-content a:hover {
-            color: var(--accent);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            color: var(--primary);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px 20px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.05);
-            color: var(--primary);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
-        }
-        
-        textarea.form-control {
-            min-height: 180px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
-            color: var(--primary);
-            padding: 80px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(to right, var(--accent), #ff4500);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-about {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .footer-logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: inline-block;
-        }
-        
-        .footer-about p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--primary);
-        }
-        
-        .footer-links h3, .footer-newsletter h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--primary);
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .footer-links h3::after, .footer-newsletter h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 15px;
-        }
-        
-        .footer-links ul li a {
-            color: rgba(0, 0, 0, 0.7);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-links ul li a i {
-            color: var(--accent);
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-        
-        .footer-links ul li a:hover i {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.1);
-            color: var(--accent);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            font-size: 1.4rem;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-newsletter p {
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--primary);
-        }
-        
-        .newsletter-form {
-            display: flex;
-            margin-top: 20px;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            background: rgba(0, 0, 0, 0.1);
-            color: var(--primary);
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .newsletter-form input::placeholder {
-            color: rgba(0, 0, 0, 0.6);
-        }
-        
-        .newsletter-form button {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 0 30px;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .newsletter-form button:hover {
-            background: #ffcc00;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1100px) {
-            .hero-content h2 {
-                font-size: 3.2rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-content {
-                flex-direction: column;
-            }
-            
-            .modal-content {
-                width: 95%;
-                margin: 10% auto;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 90px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                border-radius: 0 0 20px 20px;
-                z-index: 1000;
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 15px 0;
-                text-align: center;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                display: block;
-                width: 100%;
-                max-width: 300px;
-                margin: 10px 0;
-            }
-            
-            .section {
-                padding: 70px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .budget-table {
-                font-size: 0.9rem;
-            }
-            
-            .budget-table th, .budget-table td {
-                padding: 8px 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .logo-text h1 {
-                font-size: 1.5rem;
-            }
-            
-            .logo-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-            
-            .modal-content {
-                padding: 20px 15px;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>一次性分房抽签（静态页面）</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;padding:20px;background:#f6f9fc;color:#111}
+    .card{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(20,30,50,0.08);padding:18px;max-width:760px;margin:14px auto}
+    h1{margin:0 0 8px;font-size:20px}
+    p.lead{margin:0 0 12px;color:#555}
+    .admin{border-left:4px solid #3b82f6;padding-left:12px}
+    .hint{font-size:13px;color:#666}
+    label{display:block;margin-top:8px;font-weight:600;font-size:13px}
+    input[type=text], textarea{width:100%;padding:8px;border:1px solid #e6eef8;border-radius:6px;box-sizing:border-box}
+    button{background:#3b82f6;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;margin-top:10px}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    .codes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .codeBox{background:#f3f7ff;border:1px dashed #d7e6ff;padding:8px;border-radius:8px;font-family:monospace}
+    .result{background:#fcffef;border:1px solid #f2f8d8;padding:12px;border-radius:8px;margin-top:12px}
+    .used{opacity:.5;text-decoration:line-through}
+    .small{font-size:13px;color:#666}
+    footer{font-size:13px;color:#777;text-align:center;margin-top:18px}
+    .danger{color:#a00;font-weight:700}
+    .flex{display:flex;gap:8px;flex-wrap:wrap}
+    .export{white-space:pre-wrap;background:#f8f8f8;padding:8px;border-radius:6px;border:1px solid #e9e9e9}
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <img src="photo_2025-08-09_22-46-34.jpg" alt="DepriSa Logo">
-                </div>
-                <div class="logo-text">
-                    <h1>DepriSa</h1>
-                    <p>RACING TEAM</p>
-                </div>
-            </div>
-            <nav>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#project">Project</a></li>
-                    <li><a href="#sponsors">Sponsors</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <div class="card">
+    <h1>一次性线上分房（静态页面）</h1>
+    <p class="lead">使用说明：管理员把每个人的 <strong>一次性 code</strong> 私下发给他们。参与者在页面输入 code 即可查看自己的房间和同房伙伴。页面没有后台，所有逻辑都在浏览器中运行。</p>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h2>DEPRISA RACING TEAM</h2>
-            <p>Innovative STEM Racing: Where Science Meets Speed</p>
-            <div class="hero-btns">
-                <a href="#project" class="btn">Our Project</a>
-                <a href="#sponsors" class="btn btn-outline">Become a Sponsor</a>
-            </div>
-        </div>
-        <div class="track-animation">
-            <div class="race-line"></div>
-            <div class="race-car"><i class="fas fa-car-side"></i></div>
-        </div>
-    </section>
+    <div class="admin">
+      <label>管理员面板 — 配置参与者名单（请务必保证为 8 人）</label>
+      <textarea id="namesInput" rows="4" placeholder='示例: 一行一个名字，长度 8 行
+例如：
+Alice
+Bob
+Charlie
+David
+Eve
+Frank
+Grace
+Heidi'></textarea>
+      <div class="flex">
+        <button id="generateBtn">生成 codes → 显示给每个人并导出映射（仅管理员）</button>
+        <button id="resetBtn" style="background:#ef4444">重置</button>
+      </div>
+      <p class="hint">生成后会在下方显示 8 个一次性 code（你要把每个 code 私下发给对应的人）。页面会把 code 对应关系以混淆方式内嵌在网页中（在“导出映射”区域），参会者无法在页面上看到其他人的分配。</p>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-                <p>Learn about our mission, achievements, and the passion that drives us forward</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>What is STEM Racing?</h3>
-                    <p>STEM Racing is a fun and fast-paced competition where students team up to design, build, and race a mini CO₂-powered car. It blends science, technology, engineering, and math with real-world tools, while building teamwork, leadership, and problem-solving skills for future careers.</p>
-                    
-                    <h3>Who Are We?</h3>
-                    <p>We are the new generation of innovators at DepriSa Racing Team, SMK Tun Mutahir, Batu Berendam, Melaka, driven by our passion for STEM and the thrill of competition.</p>
-                    
-                    <h3>Why "DepriSa"?</h3>
-                    <p>Our team name "DepriSa" is a fusion of two powerful concepts: "Depression" representing the aerodynamic low-pressure zones we create for speed, and "Sa" from our school's name. Together, they symbolize our innovative approach to racing and our school pride.</p>
-                </div>
-                <div class="about-image">
-                    <div class="achievements">
-                        <i class="fas fa-trophy"></i>
-                        <h3>2024 Achievements</h3>
-                        <p>Scrutineering Award Winner</p>
-                        <p>3rd Place - Melaka State Finals</p>
-                        <p>13th Place - Malaysia National Finals</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div id="adminArea" style="margin-top:12px;display:none">
+        <label>为每个人生成的一次性 code（请私下发给他们）</label>
+        <div id="codes" class="codes"></div>
 
-    <!-- Team Section -->
-    <section id="team" class="section team">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Team</h2>
-                <p>The talented individuals driving our innovation and success</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="photo_2025-09-03_16-37-37.jpg" alt="Izzah Jannah - Team Manager">
-                    </div>
-                    <div class="member-info">
-                        <h3>IZZAH JANNAH</h3>
-                        <span class="role">Team Manager & Graphic Designer</span>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/kh_4fyd/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="photo_2025-09-03_16-38-19.jpg" alt="Wafiy Muslim - Manufacturing Engineer">
-                    </div>
-                    <div class="member-info">
-                        <h3>WAFIY MUSLIM</h3>
-                        <span class="role">Manufacturing Engineer</span>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/fiynextdoor/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="photo_2025-09-03_16-38-20.jpg" alt="Koo Yi Ler - Design Engineer">
-                    </div>
-                    <div class="member-info">
-                        <h3>KOO YI LER</h3>
-                        <span class="role">Design Engineer</span>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/yyyy_ler118/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="photo_2025-09-03_16-37-48.jpg" alt="Aisyah - Sponsorship & Marketing Manager">
-                    </div>
-                    <div class="member-info">
-                        <h3>AISYAH BINTI HASHIM</h3>
-                        <span class="role">Sponsor & Marketing Designer & Finance Manager</span>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/lilabeecah/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="mailto:deprisaracing@gmail.com"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Section -->
-    <section id="project" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Project</h2>
-                <p>Our mission to build the fastest and most innovative CO₂-powered racing car</p>
-            </div>
-            <div class="project-highlights">
-                <div class="highlight-card">
-                    <div class="icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Project Objective</h3>
-                    <p>Design and build a competitive and innovative F1 racing car, test and optimize performance, and compete in STEM RACING MALAYSIA STATE-LEVEL COMPETITION 2025.</p>
-                    <a href="#" class="btn learn-more-btn" style="margin-top: 15px;" data-modal="modal-objective">Learn More</a>
-                </div>
-                <div class="highlight-card">
-                    <div class="icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Expected Results</h3>
-                    <p>Successfully build a functional racing car, gain valuable experience, elevate school and state recognition, establish a strong reputation, and enhance engineering skills.</p>
-                    <a href="#" class="btn learn-more-btn" style="margin-top: 15px;" data-modal="modal-results">Our Goals</a>
-                </div>
-                <div class="highlight-card">
-                    <div class="icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>Project Budget</h3>
-                    <p>Total project budget of RM 19,126 covering team identity, manufacturing, marketing, and portfolio expenses.</p>
-                    <a href="#" class="btn learn-more-btn" style="margin-top: 15px;" data-modal="modal-budget">View Details</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Objective Modal -->
-    <div id="modal-objective" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h2>Project Objective</h2>
-            </div>
-            <p>We are currently seeking funding to support the development of a high-performance miniature Formula 1 racing car. Our goal is to design, build, refine, and race an advanced car that highlights innovation, cutting-edge engineering, and technology.</p>
-            
-            <h3>Key Objectives:</h3>
-            <ul class="results-list">
-                <li>Design and build a competitive and innovative F1 racing car</li>
-                <li>Test and optimize the racing car's performance</li>
-                <li>Compete in STEM RACING MALAYSIA STATE-LEVEL COMPETITION 2025</li>
-            </ul>
-            
-            <p>This project represents an incredible opportunity for our team to apply STEM principles in a practical, exciting context while developing valuable skills in engineering, project management, and teamwork.</p>
-        </div>
+        <label style="margin-top:8px">导出映射（管理员保存这段 JSON 到安全处；也可以把整个页面 HTML 保存为静态文件并部署）</label>
+        <div id="exportJson" class="export small"></div>
+      </div>
     </div>
 
-    <!-- Expected Results Modal -->
-    <div id="modal-results" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h2>Expected Results</h2>
-            </div>
-            <p>Our participation in the STEM Racing Malaysia competition will yield significant benefits beyond the race track. We anticipate the following outcomes:</p>
-            
-            <ul class="results-list">
-                <li>Successfully designed, built, and assembled a functional racing car</li>
-                <li>Gained valuable exposure and experience through participation in the STEM Racing Malaysia State-Level Competition 2025</li>
-                <li>Elevated the image of both the school and the state of Melaka, earning wider recognition</li>
-                <li>Established a strong and respectable reputation for the team, the school, and Melaka</li>
-                <li>Enhanced engineering skills and significantly improved teamwork among team members</li>
-            </ul>
-            
-            <p>These outcomes will not only benefit our current team members but will also create a legacy for future students interested in STEM fields.</p>
-        </div>
+    <hr style="margin:18px 0">
+
+    <div>
+      <label>参与者面板 — 输入你收到的一次性 code：</label>
+      <input id="codeInput" type="text" placeholder="在这里粘贴你的 code（区分大小写）" />
+      <button id="revealBtn">揭晓我的房间</button>
+
+      <div id="result" class="result" style="display:none"></div>
+
+      <p class="hint" style="margin-top:8px">提示：一次性 code 只能揭晓一次。请管理员把 code 私下发给每个人（例如私讯、私聊）。</p>
     </div>
 
-    <!-- Project Budget Modal -->
-    <div id="modal-budget" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h2>Project Budget</h2>
-            </div>
-            <p>Total project budget of RM 19,126 covering team identity, manufacturing, marketing, and portfolio expenses. Below is the detailed breakdown:</p>
-            
-            <table class="budget-table">
-                <tr>
-                    <th>ITEM</th>
-                    <th>AMOUNT (RM)</th>
-                </tr>
-                <tr>
-                    <td>TEAM APPAREL</td>
-                    <td>5,000</td>
-                </tr>
-                <tr>
-                    <td>MATERIAL, TOOLS</td>
-                    <td>600</td>
-                </tr>
-                <tr>
-                    <td>TYRES</td>
-                    <td>4,600</td>
-                </tr>
-                <tr>
-                    <td>CAR KIT</td>
-                    <td>4,976</td>
-                </tr>
-                <tr>
-                    <td>AIR BRUSHING</td>
-                    <td>2,600</td>
-                </tr>
-                <tr>
-                    <td>STICKERS</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>FLYER, BANNER, ADVERTISMENT</td>
-                    <td>600</td>
-                </tr>
-                <tr>
-                    <td>MERCHANDISE</td>
-                    <td>350</td>
-                </tr>
-                <tr>
-                    <td>PRINTING</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td><strong>TOTAL</strong></td>
-                    <td><strong>19,126</strong></td>
-                </tr>
-            </table>
-            
-            <p>This budget represents our comprehensive plan to design, build, and compete with a professionally crafted racing car while promoting our team and sponsors effectively.</p>
-        </div>
+    <hr style="margin:18px 0">
+
+    <div class="small">
+      <strong>重要安全说明：</strong>
+      <ul>
+        <li>此页面是 <em>纯静态</em>、无后台的工具：分配关系被嵌入页面脚本中（混淆过），但任何懂技术的人仍可查看源码获得映射。若你担心这种情况，请只把部署好的页面 URL 给参与者，并将每个 code 私下单独私信发送。</li>
+        <li>若你需要更高安全（无人可查看源码），需要一个简单的后端服务来在服务器端保存 mapping 并且每个 code 只能被揭晓一次。</li>
+      </ul>
     </div>
 
-    <!-- Sponsorship Section -->
-    <section id="sponsors" class="section sponsorship">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sponsorship Opportunities</h2>
-                <p>Join us on our journey to innovation and racing excellence</p>
-            </div>
-            <div class="packages">
-                <div class="package metallic">
-                    <h3>METALLIC</h3>
-                    <div class="price">RM 1,500+</div>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> Logo on Portfolio Pit Display</li>
-                        <li><i class="fas fa-check-circle"></i> Social Media Promotion</li>
-                        <li><i class="fas fa-check-circle"></i> Team Apparel Placement</li>
-                        <li><i class="fas fa-check-circle"></i> Featured in Marketing Materials</li>
-                        <li><i class="fas fa-check-circle"></i> Mention in Press Releases</li>
-                    </ul>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-                <div class="package apex">
-                    <h3>APEX</h3>
-                    <div class="price">RM 3,000+</div>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> All Metallic Benefits</li>
-                        <li><i class="fas fa-check-circle"></i> Featured on Merchandise</li>
-                        <li><i class="fas fa-check-circle"></i> Racing Car Branding</li>
-                        <li><i class="fas fa-check-circle"></i> Unlimited Advertising</li>
-                        <li><i class="fas fa-check-circle"></i> VIP Event Invitations</li>
-                    </ul>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-                <div class="package supreme">
-                    <h3>SUPREME</h3>
-                    <div class="price">RM 5,000+</div>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> All Apex Benefits</li>
-                        <li><i class="fas fa-check-circle"></i> Team Name Association</li>
-                        <li><i class="fas fa-check-circle"></i> "Powered By" Recognition</li>
-                        <li><i class="fas fa-check-circle"></i> Exclusive 60-second Ad</li>
-                        <li><i class="fas fa-check-circle"></i> Featured in Documentary</li>
-                    </ul>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <footer>页面作者：自动分房小工具 · 使用前请备份原始名单</footer>
+  </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch to sponsor our team or learn more about our project</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>We'd love to hear from potential sponsors, supporters, and anyone interested in STEM education and racing innovation.</p>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="info-content">
-                            <h4>Location</h4>
-                            <p>SMK Tun Mutahir, Batu Berendam, Melaka</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div class="info-content">
-                            <h4>Email</h4>
-                            <p><a href="mailto:deprisaracing@gmail.com">deprisaracing@gmail.com</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div class="info-content">
-                            <h4>Phone</h4>
-                            <p><a href="tel:+601136617692">+60 11-3661 7692</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-globe"></i>
-                        <div class="info-content">
-                            <h4>Website</h4>
-                            <p><a href="https://deprisaracing.com/DepriSa.html" target="_blank">deprisaracing.com/DepriSa.html</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links" style="margin-top: 30px;">
-                        <a href="https://www.youtube.com/@DepriSaRacing" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/DeprisaRacing" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+/*
+Static single-file "one-time code" assignment tool.
+Usage:
+1) 管理员在 namesInput 中逐行填入 8 个名字，点击「生成」。
+2) 管理员把生成的 8 个 code 私下分别发给对应的人（例如 DM）。
+3) 参与者打开同一页面，粘贴他们收到的 code，点击「揭晓我的房间」查看自己的房号与同房者。
+Note: 由于为静态前端，若你担心源码可见请采用私下托管并谨慎分发 codes。
+*/
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">DepriSa</div>
-                    <p>Innovative STEM Racing Team from SMK Tun Mutahir, Melaka. Redefining speed through science, technology, engineering, and mathematics.</p>
-                    <div class="social-links">
-                        <a href="https://www.youtube.com/@DepriSaRacing" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/deprisa_sr/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/DeprisaRacing" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/deprisa-sr-aab513378/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#team"><i class="fas fa-chevron-right"></i> Our Team</a></li>
-                        <li><a href="#project"><i class="fas fa-chevron-right"></i> Project</a></li>
-                        <li><a href="#sponsors"><i class="fas fa-chevron-right"></i> Sponsorship</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates on our racing journey and achievements.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 DepriSa Racing Team. All Rights Reserved. | SMK Tun Mutahir, Melaka</p>
-                <p>Official Website: <a href="https://deprisaracing.com/DepriSa.html" target="_blank" style="color: var(--accent);">deprisaracing.com/DepriSa.html</a></p>
-            </div>
-        </div>
-    </footer>
+// ---- Configuration / helper ----
+const utils = {
+  randHex(len=6){ const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let s=''; for(let i=0;i<len;i++) s+=chars[Math.floor(Math.random()*chars.length)]; return s },
+  b64enc(s){ return btoa(unescape(encodeURIComponent(s))) },
+  b64dec(s){ try{return decodeURIComponent(escape(atob(s))) }catch(e){return null} }
+};
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('nav ul');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                navMenu.classList.remove('show');
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 90,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            });
+const generateMapping = (names) => {
+  // names: array of 8 names
+  // generate 8 codes, and pair them into 4 rooms (2 per room)
+  const codes = [];
+  for(let i=0;i<8;i++) codes.push(utils.randHex(6));
+  // shuffle names
+  const shuffled = names.slice();
+  for(let i=shuffled.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  // pair up sequentially -> room1: index 0+1, room2: 2+3, etc
+  const mapping = {}; // code -> {room: n, name: name}
+  for(let i=0;i<8;i++){
+    const room = Math.floor(i/2)+1; // 1..4
+    mapping[codes[i]] = { room: room, name: shuffled[i] };
+  }
+  return { codes, mapping, shuffled };
+};
+
+// ---- UI ----
+const namesInput = document.getElementById('namesInput');
+const generateBtn = document.getElementById('generateBtn');
+const resetBtn = document.getElementById('resetBtn');
+const adminArea = document.getElementById('adminArea');
+const codesDiv = document.getElementById('codes');
+const exportJson = document.getElementById('exportJson');
+const codeInput = document.getElementById('codeInput');
+const revealBtn = document.getElementById('revealBtn');
+const resultDiv = document.getElementById('result');
+
+let currentState = null; // {codes:[], mapping:{code: {room,name}}, used: {code:true}, createdAt:...}
+
+// Load state from hardcoded embedded map if present (for page reuse)
+function loadEmbedded() {
+  if(window.__ASSIGNMENT_EMBEDDED__) {
+    try {
+      currentState = window.__ASSIGNMENT_EMBEDDED__;
+      // mark used map if absent
+      if(!currentState.used) currentState.used = {};
+      showAdminArea();
+    } catch(e){ console.warn('无法载入嵌入映射') }
+  }
+}
+
+function showAdminArea(){
+  adminArea.style.display='block';
+  codesDiv.innerHTML='';
+  currentState.codes.forEach(c=>{
+    const el = document.createElement('div');
+    el.className='codeBox';
+    el.innerHTML = `<div style="font-weight:700">${c}</div><div class="small">发送给：<em>${currentState.mapping[c].name}</em></div><div class="small">房间：<strong>房 ${currentState.mapping[c].room}</strong></div>`;
+    codesDiv.appendChild(el);
+  });
+  exportJson.textContent = JSON.stringify(currentState);
+}
+
+// Generate button
+generateBtn.addEventListener('click', ()=>{
+  const raw = namesInput.value.trim();
+  if(!raw){ alert('请先把 8 个人的名字逐行填入'); return; }
+  const lines = raw.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  if(lines.length !== 8){ if(!confirm(`你输入了 ${lines.length} 名。当前工具预期 8 人。\n确定要继续吗？（继续将以当前人数生成配对）`)) return; }
+  const {codes, mapping, shuffled} = generateMapping(lines);
+  currentState = { codes, mapping, used: {}, createdAt: (new Date()).toISOString() };
+  // To make mapping not trivially visible, we'll also produce an embedded token (base64 of mapping)
+  // but we show direct mapping to admin only in adminArea.
+  showAdminArea();
+  alert('已生成 codes。请把每个 code 私下发给对应的人（不要在群里公开）。\n你也可以复制「导出映射」并保存备份。');
+});
+
+// Reset
+resetBtn.addEventListener('click', ()=>{
+  if(!confirm('确定要清空当前配置吗？')) return;
+  currentState = null;
+  adminArea.style.display='none';
+  codesDiv.innerHTML='';
+  exportJson.textContent='';
+  namesInput.value='';
+  resultDiv.style.display='none';
+});
+
+// Reveal
+revealBtn.addEventListener('click', ()=>{
+  const code = (codeInput.value || '').trim();
+  if(!code){ alert('请输入一次性 code'); return; }
+  if(!currentState){
+    // Try to load embedded mapping from the page variable (if the page was exported)
+    if(window.__ASSIGNMENT_EMBEDDED__){
+      currentState = window.__ASSIGNMENT_EMBEDDED__;
+      if(!currentState.used) currentState.used = {};
+    } else {
+      alert('当前页面尚未配置分房映射（管理员需要先生成并把映射嵌入页面或部署一份已生成的页面）。请联系管理员。');
+      return;
+    }
+  }
+  const entry = currentState.mapping[code];
+  if(!entry){
+    alert('无效的 code 或 code 已被使用。请确认你收到的 code 是正确的并联系管理员（不要在群内公开 code）。');
+    return;
+  }
+  if(currentState.used && currentState.used[code]){
+    alert('此 code 已被使用（已揭晓）。若你需要帮助请联系管理员。');
+    return;
+  }
+  // reveal: show room and partner
+  // find partner: same room, different code
+  const room = entry.room;
+  const partners = [];
+  for(const [c,v] of Object.entries(currentState.mapping)){
+    if(v.room === room && c !== code) partners.push(v.name);
+  }
+  currentState.used[code] = true; // mark used locally
+  resultDiv.style.display='block';
+  resultDiv.innerHTML = `<div style="font-size:16px;font-weight:700">你被分配到：房 ${room}</div>
+    <div style="margin-top:8px">你的同房者：<strong>${partners.join(', ') || '（未知）'}</strong></div>
+    <div class="small" style="margin-top:8px;color:#555">提示：此 code 已标记为已使用（仅保存在此页面的内存）。若你需要管理员在后台记录，请把使用记录发给管理员。</div>`;
+});
+
+// Allow admins to paste an exported JSON to embed mapping to page (optional)
+(function embedImportShortcut(){
+  // If page URL contains ?embed=BASE64JSON, auto-load it
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if(params.has('embed')){
+      const raw = params.get('embed');
+      try {
+        const json = utils.b64dec(raw);
+        const obj = JSON.parse(json);
+        // basic validation
+        if(obj && obj.codes && obj.mapping){
+          window.__ASSIGNMENT_EMBEDDED__ = obj;
+          currentState = obj;
+          if(!currentState.used) currentState.used = {};
+          showAdminArea();
+          console.log('已载入嵌入映射（来自 URL param embed）');
         }
-        
-        // Newsletter form
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const emailInput = this.querySelector('input[type="email"]');
-                alert(`Thank you for subscribing with ${emailInput.value}! You'll receive our updates soon.`);
-                emailInput.value = '';
-            });
-        }
-        
-        // Animation on scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-        
-        // Observe elements
-        document.querySelectorAll('.about-content, .team-member, .highlight-card, .package').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Modal functionality
-        const modalButtons = document.querySelectorAll('.learn-more-btn');
-        const modals = document.querySelectorAll('.modal');
-        const closeButtons = document.querySelectorAll('.close');
-        
-        modalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modalId = button.getAttribute('data-modal');
-                const modal = document.getElementById(modalId);
-                modal.style.display = 'block';
-            });
-        });
-        
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modal = button.closest('.modal');
-                modal.style.display = 'none';
-            });
-        });
-        
-        window.addEventListener('click', (event) => {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        });
-    </script>
+      } catch(e){}
+    }
+  } catch(e){}
+})();
+</script>
 </body>
 </html>
+
 
 
 
