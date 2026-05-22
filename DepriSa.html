@@ -107,14 +107,14 @@
             100% { transform: scale(1); opacity: 0.9; }
         }
 
-        /* 主容器原本样式增强 */
+        /* 主容器样式 - 所有文字均为亮色 */
         .container {
             max-width: 1300px;
             width: 100%;
-            background: rgba(12, 20, 30, 0.65);
+            background: rgba(12, 20, 30, 0.75);
             backdrop-filter: blur(14px);
             border-radius: 48px;
-            border: 1px solid rgba(0, 255, 255, 0.25);
+            border: 1px solid rgba(0, 255, 255, 0.35);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.2);
             padding: 30px 32px;
             transition: all 0.3s ease;
@@ -133,18 +133,19 @@
 
         .subtitle {
             text-align: center;
-            color: #94a3b8;
+            color: #b9d0f0;
             margin-bottom: 32px;
             font-weight: 400;
-            border-bottom: 1px dashed rgba(56, 189, 248, 0.4);
+            border-bottom: 1px dashed rgba(56, 189, 248, 0.5);
             display: inline-block;
             width: auto;
             margin-left: auto;
             margin-right: auto;
             padding-bottom: 8px;
+            font-size: 1rem;
         }
 
-        /* 房间卡片网格 */
+        /* 房间卡片 */
         .room-info {
             display: flex;
             flex-wrap: wrap;
@@ -156,12 +157,12 @@
         .room-card {
             flex: 1;
             min-width: 180px;
-            background: rgba(15, 25, 40, 0.7);
+            background: rgba(15, 25, 40, 0.8);
             backdrop-filter: blur(8px);
             border-radius: 28px;
             padding: 18px 12px;
             text-align: center;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.4);
             transition: all 0.25s ease;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             position: relative;
@@ -189,18 +190,18 @@
         .room-name {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #e2e8f0;
+            color: #f1f5f9;
             margin-bottom: 8px;
         }
         .room-desc {
             font-size: 0.75rem;
-            color: #7e8aa2;
+            color: #a0b3d9;
             margin-bottom: 12px;
         }
         .room-capacity {
             font-size: 0.9rem;
-            color: #94a3b8;
-            background: rgba(0,0,0,0.4);
+            color: #cbd5e6;
+            background: rgba(0,0,0,0.5);
             display: inline-block;
             padding: 4px 12px;
             border-radius: 40px;
@@ -209,12 +210,12 @@
             font-size: 1.6rem;
             font-weight: 800;
             margin: 8px 0;
-            color: #cbd5e6;
+            color: #e2e8f0;
         }
         .room-occupancy span {
             font-size: 1rem;
             font-weight: 400;
-            color: #5f7f9e;
+            color: #9ab3d4;
         }
         .progress-bar {
             width: 80%;
@@ -233,12 +234,12 @@
         }
 
         .input-section {
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.45);
             backdrop-filter: blur(8px);
             border-radius: 36px;
             padding: 28px;
             margin: 32px 0;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.4);
             text-align: center;
         }
 
@@ -246,7 +247,7 @@
             margin-bottom: 24px;
         }
         label {
-            color: #cbd5e1;
+            color: #cbd5e6;
             font-weight: 600;
             font-size: 1.1rem;
             display: block;
@@ -257,7 +258,7 @@
             max-width: 340px;
             padding: 14px 20px;
             background: #0f172ad9;
-            border: 1.5px solid #2d3a5e;
+            border: 1.5px solid #3b4a6e;
             border-radius: 60px;
             font-size: 1rem;
             color: #f1f5f9;
@@ -265,6 +266,9 @@
             text-align: center;
             margin: 0 auto;
             display: block;
+        }
+        input::placeholder {
+            color: #8ba0bc;
         }
         input:focus {
             outline: none;
@@ -302,18 +306,22 @@
 
         .status-message {
             margin-top: 20px;
-            padding: 12px;
+            padding: 12px 20px;
             border-radius: 60px;
             font-weight: 600;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
             display: inline-block;
             width: auto;
             max-width: 90%;
+            color: #e2e8f0;
         }
 
         .result-section {
             margin-top: 30px;
+        }
+        .result-section h2 {
+            color: #b9e2ff;
         }
 
         .result-table {
@@ -325,12 +333,12 @@
             background: #0f1a2bb3;
             backdrop-filter: blur(8px);
             padding: 14px;
-            color: #b9d0f0;
+            color: #cfe3ff;
             font-weight: 600;
             border-radius: 20px 20px 8px 8px;
         }
         .result-table td {
-            background: rgba(20, 30, 45, 0.7);
+            background: rgba(20, 30, 45, 0.8);
             padding: 14px;
             border-radius: 20px;
             backdrop-filter: blur(4px);
@@ -338,8 +346,8 @@
             transition: 0.1s;
         }
         .my-result td {
-            background: rgba(56, 189, 248, 0.25);
-            box-shadow: 0 0 8px #38bdf860;
+            background: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 8px #38bdf8;
             border: 1px solid #38bdf8;
         }
         .room-badge {
@@ -357,12 +365,12 @@
         .connection-info {
             text-align: center;
             margin-bottom: 12px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
-            color: #7e8aa2;
+            color: #b0c4ef;
         }
         .connection-status {
             width: 10px;
@@ -377,10 +385,10 @@
             text-align: center;
             margin-top: 30px;
             font-size: 0.75rem;
-            color: #5f7492;
+            color: #8ba0bc;
         }
 
-        /* 抽签动画特效 */
+        /* 抽签动画 */
         .draw-animation {
             position: fixed;
             top: 50%;
@@ -397,7 +405,6 @@
             border: 1px solid #38bdf8;
             box-shadow: 0 0 50px rgba(0,255,255,0.4);
             white-space: nowrap;
-            font-family: monospace;
             letter-spacing: 4px;
             animation: fadePop 0.4s ease;
         }
@@ -410,6 +417,7 @@
             .room-name { font-size: 1.2rem; }
             .curtain h2 { font-size: 2rem; }
             .curtain button { font-size: 1.3rem; padding: 12px 32px; }
+            .draw-animation { font-size: 1.3rem; white-space: nowrap; padding: 12px 20px; }
         }
     </style>
 </head>
@@ -477,7 +485,7 @@
     </div>
 
     <div class="result-section">
-        <h2 style="color:#b9e2ff;">📡 实时住客表</h2>
+        <h2>📡 实时住客表</h2>
         <table class="result-table">
             <thead>
                 <tr><th>👤 参与者</th><th>🛖 分配房间</th><th>👥 同房伙伴</th></tr>
@@ -501,9 +509,9 @@
     };
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
-    const assignmentsRef = database.ref('assignments_v4'); // 全新路径，保证四房间结构干净
+    const assignmentsRef = database.ref('assignments_v5'); // 全新干净路径
 
-    // 四房间配置 (每间2人)
+    // 四房间配置
     const ROOM_KEYS = ['room1', 'room2', 'room3', 'room4'];
     const ROOM_MAP = {
         'room1': { display: '🏰 主人房', short: '主人房', max: 2, badge: 'badge-room1' },
@@ -533,90 +541,85 @@
     };
     
     let currentAssignments = {};     // { 用户名: roomKey }
-    let isUserAssigned = false;
     
-    // 连接状态监听
-    database.ref('.info/connected').on('value', (snap) => {
-        if(snap.val()) {
-            connStatusSpan.className = 'connection-status connected';
-            connTextSpan.innerText = '✨ 已接入实时分配中枢 ✨';
-        } else {
-            connStatusSpan.className = 'connection-status disconnected';
-            connTextSpan.innerText = '⚠️ 连接中断，检查网络';
-        }
-    });
-    
-    // 强制初始化：确保主人房内定YL (room1)
-    async function enforceYL() {
+    // 强制初始化：确保主人房内定 YL 且房间计数正确
+    async function enforceYLAndClean() {
         return new Promise((resolve) => {
             assignmentsRef.transaction((data) => {
                 let fresh = data || {};
                 let changed = false;
-                // 确保YL存在且位于room1
-                if(!fresh['YL'] || fresh['YL'] !== 'room1') {
+                // 1. 保证 YL 在 room1
+                if (!fresh['YL'] || fresh['YL'] !== 'room1') {
                     fresh['YL'] = 'room1';
                     changed = true;
                 }
-                // 清理任何不属于ROOM_KEYS的脏数据，避免干扰计数
-                for(let name in fresh) {
-                    if(!ROOM_KEYS.includes(fresh[name])) {
+                // 2. 删除任何无效房间名的数据
+                for (let name in fresh) {
+                    if (!ROOM_KEYS.includes(fresh[name])) {
                         delete fresh[name];
                         changed = true;
                     }
                 }
                 return changed ? fresh : undefined;
             }, (error, committed) => {
-                if(error) console.warn("YL初始化异常", error);
-                resolve();
+                if (error) console.warn("初始化YL失败", error);
+                // 无论是否成功，再主动拉取一次数据确保同步
+                assignmentsRef.once('value', (snap) => {
+                    const data = snap.val() || {};
+                    if (!data['YL'] || data['YL'] !== 'room1') {
+                        assignmentsRef.child('YL').set('room1');
+                    }
+                    resolve();
+                });
             });
         });
     }
     
-    // 更新房间计数 + 进度条 + 表格 (浪漫科技)
+    // 更新房间计数 + 进度条 + 表格 (所有文字亮色)
     function refreshUI() {
         let counts = { room1:0, room2:0, room3:0, room4:0 };
-        for(let name in currentAssignments) {
+        for (let name in currentAssignments) {
             let r = currentAssignments[name];
-            if(counts[r] !== undefined) counts[r]++;
+            if (counts[r] !== undefined) counts[r]++;
         }
         // 更新显示数字与进度条
-        for(let r of ROOM_KEYS) {
+        for (let r of ROOM_KEYS) {
             let c = counts[r];
             let maxCap = ROOM_MAP[r].max;
-            roomCounters[r].innerText = c;
+            if (roomCounters[r]) roomCounters[r].innerText = c;
             let percent = (c / maxCap) * 100;
-            if(progressBars[r]) progressBars[r].style.width = `${percent}%`;
+            if (progressBars[r]) progressBars[r].style.width = `${percent}%`;
         }
         
-        // 渲染表格 (含同伴)
+        // 渲染表格
         resultTbody.innerHTML = '';
-        if(Object.keys(currentAssignments).length === 0) {
+        if (Object.keys(currentAssignments).length === 0) {
             resultTbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">✨ 等待星际访客 ✨</td></tr>';
         } else {
             let roomMembers = { room1:[], room2:[], room3:[], room4:[] };
-            for(let name in currentAssignments) {
+            for (let name in currentAssignments) {
                 let r = currentAssignments[name];
-                if(roomMembers[r]) roomMembers[r].push(name);
+                if (roomMembers[r]) roomMembers[r].push(name);
             }
             const currentUserName = userNameInput.value.trim();
-            for(let r of ROOM_KEYS) {
+            for (let r of ROOM_KEYS) {
                 let members = roomMembers[r];
-                for(let participant of members) {
+                for (let participant of members) {
                     let roommates = members.filter(m => m !== participant);
                     let roommatesStr = roommates.length ? roommates.join(', ') : '暂无室友';
                     let row = document.createElement('tr');
-                    if(participant === currentUserName && participant !== "") {
+                    if (participant === currentUserName && participant !== "") {
                         row.classList.add('my-result');
                     }
                     let nameCell = document.createElement('td');
                     nameCell.innerText = participant;
-                    if(participant === 'YL') {
+                    if (participant === 'YL') {
                         let crown = document.createElement('span');
                         crown.innerText = ' 👑';
                         crown.style.color = '#facc15';
                         nameCell.appendChild(crown);
                     }
-                    if(participant === currentUserName && participant !== "") {
+                    if (participant === currentUserName && participant !== "") {
                         let youSpan = document.createElement('span');
                         youSpan.innerText = ' (您)';
                         youSpan.style.color = '#38bdf8';
@@ -639,22 +642,22 @@
             }
         }
         
-        // 动态控制抽签按钮及消息
+        // 动态控制抽签按钮及消息 (同时确保YL不会抽签)
         const curName = userNameInput.value.trim();
         const allFull = ROOM_KEYS.every(r => counts[r] >= ROOM_MAP[r].max);
-        if(curName === 'YL') {
+        if (curName === 'YL') {
             assignBtn.disabled = true;
             updateStatusMessage("👑 YL 是主人房固定成员，无需抽签", "info");
         } 
-        else if(curName && currentAssignments[curName]) {
+        else if (curName && currentAssignments[curName]) {
             assignBtn.disabled = true;
             updateStatusMessage(`✅ 您已入住 ${ROOM_MAP[currentAssignments[curName]].display} ，不可重复抽取`, "info");
         }
-        else if(allFull) {
+        else if (allFull) {
             assignBtn.disabled = true;
             updateStatusMessage("🏁 所有房间均已满员，分配结束", "warning");
         }
-        else if(curName) {
+        else if (curName) {
             assignBtn.disabled = false;
             updateStatusMessage("✨ 点击抽签，系统将为您随机分配房间 ✨", "success");
         }
@@ -678,7 +681,7 @@
         let step = 0;
         const frames = ['⚡ 占卜星辰 ⚡', '🌀 排列组合 🌀', '✨ 结果揭晓 ✨', `🏠 ${finalRoomDisplay} 🏠`];
         let interval = setInterval(() => {
-            if(step < frames.length-1) {
+            if (step < frames.length-1) {
                 overlayDiv.innerText = frames[step];
                 step++;
             } else {
@@ -687,7 +690,7 @@
                     overlayDiv.innerText = frames[frames.length-1];
                     setTimeout(() => {
                         overlayDiv.remove();
-                        if(callback) callback();
+                        if (callback) callback();
                     }, 1000);
                 }, 200);
             }
@@ -695,38 +698,33 @@
         canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ['#38bdf8', '#a855f7', '#10b981'] });
     }
     
-    // 事务分配 (随机可选房间 且 保证不超额)
+    // 事务分配 (随机可选房间)
     async function performAssign(userName) {
-        if(!userName) throw new Error("姓名无效");
-        if(userName === 'YL') throw new Error("YL不可抽签");
-        if(currentAssignments[userName]) throw new Error("您已经分配过房间");
-        // 快速全局满房检查 (基于最新currentAssignments，但事务中会二次保障)
-        let cntNow = { room1:0, room2:0, room3:0, room4:0 };
-        for(let p in currentAssignments) cntNow[currentAssignments[p]]++;
-        let allFullNow = ROOM_KEYS.every(r => cntNow[r] >= ROOM_MAP[r].max);
-        if(allFullNow) throw new Error("所有房间已满");
+        if (!userName) throw new Error("姓名无效");
+        if (userName === 'YL') throw new Error("YL不可抽签");
+        if (currentAssignments[userName]) throw new Error("您已经分配过房间");
         
         return new Promise((resolve, reject) => {
             assignmentsRef.transaction((data) => {
                 let assign = data || {};
-                if(assign[userName]) return; // 已被别人抢注或已存在
+                if (assign[userName]) return; 
                 let roomCnt = { room1:0, room2:0, room3:0, room4:0 };
-                for(let p in assign) {
+                for (let p in assign) {
                     let r = assign[p];
-                    if(roomCnt[r] !== undefined) roomCnt[r]++;
+                    if (roomCnt[r] !== undefined) roomCnt[r]++;
                 }
                 let available = ROOM_KEYS.filter(r => roomCnt[r] < ROOM_MAP[r].max);
-                if(available.length === 0) return; // 满房事务终止
+                if (available.length === 0) return;
                 const chosen = available[Math.floor(Math.random() * available.length)];
                 assign[userName] = chosen;
                 return assign;
             }, (error, committed, snapshot) => {
-                if(error) reject(new Error("数据库错误"));
-                else if(!committed) reject(new Error("分配名额已被抢光，请重试"));
+                if (error) reject(new Error("数据库错误"));
+                else if (!committed) reject(new Error("名额已被抢光，请重试"));
                 else {
                     const newData = snapshot.val();
                     const assignedRoom = newData[userName];
-                    if(!assignedRoom) reject(new Error("分配异常，未获得房间"));
+                    if (!assignedRoom) reject(new Error("分配异常"));
                     else resolve(assignedRoom);
                 }
             });
@@ -735,23 +733,23 @@
     
     async function onAssign() {
         let userName = userNameInput.value.trim();
-        if(!userName) {
+        if (!userName) {
             updateStatusMessage("请输入您的姓名", "error");
             return;
         }
-        if(userName === 'YL') {
+        if (userName === 'YL') {
             updateStatusMessage("YL 是主人房永久住客，不可抽签", "error");
             return;
         }
-        if(currentAssignments[userName]) {
+        if (currentAssignments[userName]) {
             updateStatusMessage(`您已入住 ${ROOM_MAP[currentAssignments[userName]].display}`, "error");
             assignBtn.disabled = true;
             return;
         }
         // 满员预检
         let cntCur = { room1:0, room2:0, room3:0, room4:0 };
-        for(let p in currentAssignments) cntCur[currentAssignments[p]]++;
-        if(ROOM_KEYS.every(r => cntCur[r] >= ROOM_MAP[r].max)) {
+        for (let p in currentAssignments) cntCur[currentAssignments[p]]++;
+        if (ROOM_KEYS.every(r => cntCur[r] >= ROOM_MAP[r].max)) {
             updateStatusMessage("所有房间均已满员", "warning");
             assignBtn.disabled = true;
             return;
@@ -769,13 +767,13 @@
             assignBtn.disabled = true;
         } catch(err) {
             let msg = err.message;
-            if(msg.includes("已满")) updateStatusMessage("❌ 名额在最后一刻被抢光，请刷新后重试", "error");
-            else if(msg.includes("已经分配")) updateStatusMessage("❌ 您已经分配过房间", "error");
+            if (msg.includes("已满") || msg.includes("抢光")) updateStatusMessage("❌ 名额在最后一刻被抢光，请刷新后重试", "error");
+            else if (msg.includes("已经分配")) updateStatusMessage("❌ 您已经分配过房间", "error");
             else updateStatusMessage(`分配失败: ${msg}`, "error");
             // 若满员再次禁用按钮
             let afterCnt = { room1:0, room2:0, room3:0, room4:0 };
-            for(let p in currentAssignments) afterCnt[currentAssignments[p]]++;
-            if(ROOM_KEYS.every(r => afterCnt[r] >= ROOM_MAP[r].max)) assignBtn.disabled = true;
+            for (let p in currentAssignments) afterCnt[currentAssignments[p]]++;
+            if (ROOM_KEYS.every(r => afterCnt[r] >= ROOM_MAP[r].max)) assignBtn.disabled = true;
             else assignBtn.disabled = false;
         } finally {
             assignBtn.innerText = originalText;
@@ -786,8 +784,8 @@
     function startRealtimeSync() {
         assignmentsRef.on('value', (snapshot) => {
             let data = snapshot.val() || {};
-            // 后置保障：如果缺少YL，再次强制补充（防止被误删）
-            if(!data['YL'] || data['YL'] !== 'room1') {
+            // 最终保障：若YL缺失，立刻补上
+            if (!data['YL'] || data['YL'] !== 'room1') {
                 assignmentsRef.child('YL').set('room1');
                 data['YL'] = 'room1';
             }
@@ -796,37 +794,30 @@
         });
     }
     
-    // 监听输入框变化更新高亮
     userNameInput.addEventListener('input', () => {
         refreshUI();
     });
-    
     assignBtn.addEventListener('click', onAssign);
     
-    // 开幕幕布逻辑 + 加载系统
+    // 开幕幕布逻辑
     const curtain = document.getElementById('curtainOverlay');
     const mainApp = document.getElementById('mainApp');
     const revealBtn = document.getElementById('revealButton');
     
-    function revealAndStart() {
+    async function revealAndStart() {
         curtain.classList.add('hide');
         mainApp.style.opacity = '1';
-        // 播放一小点彩蛋效果
         canvasConfetti({ particleCount: 80, spread: 50, origin: { y: 0.7 }, colors: ['#38bdf8'] });
-        // 开始初始化Firebase数据
-        enforceYL().then(() => {
-            startRealtimeSync();
-        }).catch(e => console.warn);
+        await enforceYLAndClean();
+        startRealtimeSync();
     }
     revealBtn.addEventListener('click', revealAndStart);
-    // 也可以点击幕布任意位置揭幕，增强体验，但不干扰按钮
     curtain.addEventListener('click', (e) => {
-        if(e.target === curtain || e.target.classList.contains('curtain')) revealAndStart();
+        if (e.target === curtain || e.target.classList.contains('curtain')) revealAndStart();
     });
-    // 确保容器初始不可见但已就绪
-    mainApp.style.opacity = '0';
-    // 预连接数据库不影响揭幕，只是提前初始化（无副作用）
-    enforceYL(); 
+    
+    // 预初始化，保证数据库已有YL，但不阻塞界面
+    enforceYLAndClean();
 </script>
 </body>
 </html>
