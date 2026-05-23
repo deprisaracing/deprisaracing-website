@@ -7,7 +7,7 @@
     <!-- Firebase SDK v8 -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <!-- canvas-confetti CDN（可能会失败，但我们会做 fallback） -->
+    <!-- canvas-confetti CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,7 +57,6 @@
         .badge-room1 { background: #2563eb; } .badge-room2 { background: #059669; } .badge-room3 { background: #d97706; } .badge-room4 { background: #9333ea; }
         .connection-info { text-align: center; margin-bottom: 15px; font-size: 0.85rem; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .connected { color: #10b981; } .disconnected { color: #ef4444; }
-        /* 开幕幕布 */
         .curtain {
             position: fixed; top:0; left:0; width:100%; height:100%;
             background: radial-gradient(circle at center,#0b1120,#010101);
@@ -105,7 +104,7 @@
     }
     const confetti = window.canvasConfetti;
 
-    // Firebase 配置 (您的链接)
+    // Firebase 配置
     const firebaseConfig = {
         apiKey: "AIzaSyALyvLlsJVYdO_4O5o0dHDfXtT24LV0rF0",
         authDomain: "room-e2832.firebaseapp.com",
@@ -117,7 +116,7 @@
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
-    const ref = db.ref('assignments_final'); // 新路径
+    const ref = db.ref('assignments_final');
 
     // 房间定义
     const rooms = {
@@ -128,10 +127,18 @@
     };
     const roomKeys = ['room1','room2','room3','room4'];
 
-    let assignments = {};     // { 姓名: roomKey }
+    // 特殊名单（不区分大小写，自动匹配）
+    const specialAliases = [
+        'tee lek yun', 'ly', 'joshua', 'josh', 'js', 'ervin', 'tpy', '大帅哥'
+    ];
+    function isSpecialGuest(name) {
+        const lower = name.toLowerCase().trim();
+        return specialAliases.some(alias => lower === alias || lower.includes(alias) && alias.length >= 2);
+    }
+
+    let assignments = {};
     let currentUser = '';
 
-    // 渲染房间卡片 (动态更新人数)
     function renderRooms() {
         let counts = { room1:0, room2:0, room3:0, room4:0 };
         for (let name in assignments) {
@@ -153,7 +160,6 @@
         }).join('');
     }
 
-    // 渲染表格
     function renderTable() {
         const tbody = document.getElementById('resultBody');
         if (!tbody) return;
@@ -184,7 +190,6 @@
 
     function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-    // 刷新 UI 及按钮状态
     function refreshUI() {
         renderRooms();
         renderTable();
@@ -193,7 +198,6 @@
         const assignBtn = document.getElementById('assignBtn');
         const statusDiv = document.getElementById('statusMsg');
         if (!assignBtn) return;
-        // 已分配检查
         if (userName && assignments[userName]) {
             assignBtn.disabled = true;
             statusDiv.innerText = `✅ 您已入住 ${rooms[assignments[userName]].name}，不可重复抽取`;
@@ -204,7 +208,6 @@
             statusDiv.innerText = `👑 YL 是主人房固定成员，无需抽签`;
             return;
         }
-        // 满房检查
         let counts = { room1:0, room2:0, room3:0, room4:0 };
         for (let n in assignments) counts[assignments[n]]++;
         const allFull = roomKeys.every(k => counts[k] >= rooms[k].max);
@@ -222,7 +225,6 @@
         }
     }
 
-    // 抽签动画 + 彩带
     function showDrawAnimation(finalRoomDisplay, callback) {
         let overlayDiv = document.createElement('div');
         overlayDiv.className = 'draw-animation';
@@ -245,11 +247,10 @@
                 }, 200);
             }
         }, 400);
-        // 使用安全 confetti
         try { confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ['#38bdf8','#a855f7','#10b981'] }); } catch(e) {}
     }
 
-    // 事务分配
+    // 增强分配逻辑：特殊客人优先安排与YL同住（主人房）
     async function performAssign(userName) {
         if (!userName) throw new Error("姓名无效");
         if (userName === 'YL') throw new Error("YL不可抽签");
@@ -259,11 +260,21 @@
                 let cur = data || {};
                 if (cur[userName]) return;
                 let cnt = { room1:0, room2:0, room3:0, room4:0 };
-                for (let p in cur) if (cnt[cur[p]] !== undefined) cnt[cur[p]]++;
-                let available = roomKeys.filter(k => cnt[k] < rooms[k].max);
-                if (available.length === 0) return;
-                const chosen = available[Math.floor(Math.random() * available.length)];
-                cur[userName] = chosen;
+                for (let p in cur) {
+                    let r = cur[p];
+                    if (cnt[r] !== undefined) cnt[r]++;
+                }
+                // 特殊客人彩蛋：如果主人房未满且用户名匹配特殊名单，则直接安排进主人房
+                let assignedRoom = null;
+                if (isSpecialGuest(userName) && cnt.room1 < rooms.room1.max) {
+                    assignedRoom = 'room1';
+                }
+                if (!assignedRoom) {
+                    let available = roomKeys.filter(k => cnt[k] < rooms[k].max);
+                    if (available.length === 0) return;
+                    assignedRoom = available[Math.floor(Math.random() * available.length)];
+                }
+                cur[userName] = assignedRoom;
                 return cur;
             }, (error, committed, snapshot) => {
                 if (error) reject(new Error("数据库错误: " + error.message));
@@ -297,17 +308,15 @@
             assignBtn.disabled = true;
         } catch (err) {
             alert("分配失败: " + err.message);
-            refreshUI();  // 恢复按钮状态
+            refreshUI();
         } finally {
             assignBtn.innerText = originalText;
         }
     }
 
-    // 监听数据库实时变化
     function startListening() {
         ref.on('value', (snapshot) => {
             assignments = snapshot.val() || {};
-            // 确保 YL 始终在主人房
             if (!assignments['YL'] || assignments['YL'] !== 'room1') {
                 ref.child('YL').set('room1');
                 assignments['YL'] = 'room1';
@@ -322,12 +331,10 @@
         });
     }
 
-    // 强制初始化 YL（主人房）
     function initYL() {
         ref.child('YL').set('room1').catch(e => console.warn("YL初始化失败", e));
     }
 
-    // 开幕 + 启动
     window.onload = () => {
         initYL();
         startListening();
